@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+import TaskManager from './components/TaskManager';
 import './App.css';
 
-function App() {
+const App = () => {
+  // Mock tasks data for demonstration purposes
+  const tasks = [
+    { id: 1, name: 'Task 1', color: '#ff0000' },
+    { id: 2, name: 'Task 2', color: '#00ff00' },
+    { id: 3, name: 'Task 3', color: '#0000ff' },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="side-fish-tanks">
+        <TaskManager />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,22 @@
+.task-manager-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .fish-tanks-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .fish-tanks {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .center-fish-tank {
+    flex: 1;
+    background-color: lightblue;
+    /* Add additional styling for the center fish tank as desired */
+  }
