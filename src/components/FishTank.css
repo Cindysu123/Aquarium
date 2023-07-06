@@ -1,7 +1,8 @@
 .fish-tank {
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     padding: 10px;
     margin-bottom: 20px;
+    width: 110%;
   }
   
   .fish-tank-title {
@@ -9,9 +10,40 @@
     margin-bottom: 10px;
   }
   
-  .fish-task {
-    background-color: #f0f0f0;
-    padding: 5px;
-    margin-bottom: 5px;
+  .button-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .expand-b {
+    margin-right: 10%;
+    color: #473b78;
+    border: none;
+    border-radius: 10%;
+    width: 20px;
+    height: 20px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+
+  .Task-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 6%;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #4da6ff;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
   }
   

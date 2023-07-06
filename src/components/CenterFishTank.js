@@ -5,7 +5,7 @@ import './CenterFishTank.css';
 const CenterFishTank = ({ tasks }) => {
   const renderTimeScale = () => {
     const timeScale = [];
-    for (let hour = 0; hour < 24; hour++) {
+    for (let hour = 7; hour < 24; hour++) {
       const formattedHour = hour.toString().padStart(2, '0');
       timeScale.push(
         <div key={hour} className="time-slot">
@@ -23,8 +23,7 @@ const CenterFishTank = ({ tasks }) => {
       const date = new Date();
       const hours = date.getHours().toString().padStart(2, '0');
       const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      const formattedTime = `${hours}:${minutes}:${seconds}`;
+      const formattedTime = `${hours}:${minutes}`;
       setCurrentTime(formattedTime);
     }, 1000);
 
@@ -38,7 +37,15 @@ const CenterFishTank = ({ tasks }) => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const totalMinutes = hours * 60 + minutes;
-    return `${(totalMinutes / 1440) * 750}%`;
+    return `${265 + (totalMinutes / 1440)*1486}px`;
+  };
+
+  const getCurrentTimePosition2 = () => {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const totalMinutes = hours * 60 + minutes;
+    return `${265 + (totalMinutes / 1440)*1486-14}px`;
   };
 
   return (
@@ -47,19 +54,21 @@ const CenterFishTank = ({ tasks }) => {
         <div className="time-scale">
           {renderTimeScale()}
         </div>
-        <div className="current-time">
-          Current Time: {currentTime}
+        <div className='Time-Line'>
+          <div className="current-time" style={{ top: getCurrentTimePosition2()}}>
+            {currentTime}
+          </div>
+          <div className="current-time-line" style={{ top: getCurrentTimePosition() }} />
         </div>
-        {/* <div className="current-time-line" style={{ top: `750%` }} /> */}
-        <div className="current-time-line" style={{ top: getCurrentTimePosition() }} />
       </div>
-      <div className="task-container">
+      <div className="fish-container">
         {tasks.map((task) => (
           <div key={task.id} className="task">
             <Fish
               name={task.name}
               source="CenterFishTank"
               selectedTime={task.time}
+              description={task.description}
             />
           </div>
         ))}

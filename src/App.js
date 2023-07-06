@@ -1,6 +1,7 @@
 import React from 'react';
 import TaskManager from './components/TaskManager';
 import './App.css';
+import img from './img/Top.png';
 
 const App = () => {
   // Mock tasks data for demonstration purposes
@@ -12,8 +13,11 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <div className="side-fish-tanks">
-        <TaskManager />
+      <img src={img} alt="Top" className="top-image" />
+      <div className="content-container">
+        <div className="side-fish-tanks">
+          <TaskManager />
+        </div>
       </div>
     </div>
   );

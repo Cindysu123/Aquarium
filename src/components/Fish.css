@@ -1,13 +1,49 @@
 .fish {
-    background-color: #f0f0f0;
-    padding: 5px;
-    margin-bottom: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.fish-center{
+  animation-fill-mode: both;
+  animation-name: swimAnimation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes swimAnimation {
+  0% {
+    transform: translateX(0%);
   }
-  
-  .center-fish {
-    position: absolute;
-    background-color: lightblue;
-    padding: 10px;
-    margin-bottom: 10px;
+  50% {
+    transform: translateX(90%);
   }
-  
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.fish-text_name,
+.fish-text_time,
+.fish-text_description {
+  margin: 0;
+}
+
+.fish-image1 {
+  width: 20%;
+}
+
+.fish-text_name{
+  font-size: 20px;
+}
+
+.fish-text_description{
+  font-weight: normal;
+  font-size: 16px;
+  padding: 8px;
+}
+
