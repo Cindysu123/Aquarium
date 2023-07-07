@@ -220,3 +220,20 @@ input[type="range"]::-ms-fill-upper {
   top: 6vh;
   left: 10vw;
 }
+
+.fish-search{
+  position: absolute;
+  top: 51vh;
+  left: 40vw;
+}
+
+.search-results{
+  position: absolute;
+  top: 60vh;
+  left: 34vw;
+  z-index: 999;
+  width: 48vh;
+  background: #ffffffdb;
+  padding: 2vh;
+  border-radius: 10px;
+}

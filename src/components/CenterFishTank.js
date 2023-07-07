@@ -13,6 +13,18 @@ const CenterFishTank = ({ tasks}) => {
   const [showSettings, setShowSettings] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredFish, setFilteredFish] = useState([]);
+
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+  useEffect(() => {
+    const filtered = tasks.filter(task =>
+      task.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredFish(filtered);
+  }, [tasks, searchQuery]);
 
 
   const handleWaterHueChange = (event) => {
@@ -117,6 +129,29 @@ const CenterFishTank = ({ tasks}) => {
       <button onClick={toggleExpansion} className={`Expand-b ${expanded ? 'top-left' : 'normal'}`}>
         {expanded ? 'Collapse' : 'Expand'}
       </button>
+      <div className='search-container'>
+      <input
+        type="text"
+        placeholder="Search Fish"
+        value={searchQuery}
+        onChange={handleSearchQueryChange}
+        className="fish-search"
+      />
+      {searchQuery && (
+        <div className="search-results">
+          {filteredFish.map((fish) => (
+            <div key={fish.id} className="search-result">
+              <Fish
+                name={fish.name}
+                source="SearchResults"
+                selectedTime={fish.time}
+                description={fish.description}
+              />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
       {expanded ? (
         <ExpandedFishTank
           tasks={tasks}

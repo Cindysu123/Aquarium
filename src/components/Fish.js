@@ -73,7 +73,7 @@ const Fish = ({ name, source, selectedTime, description }) => {
       <h4 className="fish-text_name">
         {name} ({selectedTime}:00)
       </h4>
-      <h4 className="fish-text_description">{description}</h4>
+      <h4 className={`fish-text_description ${source === 'SearchResults' ? 'remove' : ''}`}>{description}</h4>
       <img src={selectedImage} alt="Fish" className="fish-image1" />
     </div>
   );
