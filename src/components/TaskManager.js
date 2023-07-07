@@ -123,7 +123,6 @@ const TaskManager = () => {
             tasks={tasks}
             selectedTime={selectedTime}
             description={description} // Pass the description prop
-            onTaskDelete={handleTaskDelete} // Pass the handleTaskDelete function as a prop
           />
         </div>
       </div>

@@ -47,3 +47,144 @@
   background-color: #ff5858;
   z-index: 998;
 }
+
+.background-water{
+  position: absolute;
+  top: 56vh;
+  left: 64vh;
+  z-index: -10;
+  height: 160vh;
+  width: 63vw;
+}
+
+.background-floor{
+  position: absolute;
+  top: 200vh;
+  left: 64vh;
+  z-index: -9;
+  height: 40vh;
+  width: 63vw;
+}
+
+.slider-container{
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 51%;
+  height: 12px;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  margin-bottom: 2vh;
+}
+
+.water-slider{
+  background: linear-gradient(to right, #4da6ff, #e978fc,#f2883e,#31c051,#55dc87,#3dacf0);
+}
+
+.floor-slider{
+  background: linear-gradient(to right, #8fde5d, #6dffea,#fcafff,#ffb179,#55dc87,#8fde5d);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #473b78;
+  background: #fff;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #473b78;
+  background: #fff;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #473b78;
+  background: #fff;
+  cursor: pointer;
+}
+
+input[type="range"]:hover {
+  opacity: 1;
+}
+
+input[type="range"]::-moz-range-progress {
+  height: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+  height: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+input[type="range"]::-ms-fill-upper {
+  height: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.background-water-small{
+  z-index: 9997;
+  width: 40vh;
+  height: 40vh;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+}
+
+.background-floor-small{
+  position: absolute;
+  top: 54vh;
+  left: 4vh;
+  z-index: 9998;
+  width: 40vh;
+  height: 8vh;
+}
+
+.fishTank-small{
+  position: absolute;
+  left: 3vh;
+  width: 41.5vh;
+  z-index: 9999;
+  height: 49vh;
+}
+
+.setting-container{
+  position: absolute;
+  padding: 4vh;
+  top: 60vh;
+  left: 150vh;
+  z-index: 9999;
+  width: 40vh;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.setting-image {
+  position: absolute;
+  width: 4vh;
+  top: 51vh;
+  left: 198vh;
+  cursor: pointer;
+  transition: transform 0.8s ease;
+}
+
+.label-w, .label-f{
+  font-size: 3vh;
+}

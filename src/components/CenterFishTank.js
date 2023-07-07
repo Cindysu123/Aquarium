@@ -1,8 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Fish from './Fish';
 import './CenterFishTank.css';
+import bg1 from '../img/fish/bg1.png';
+import f1 from '../img/fish/f1.png';
+import fishTank from '../img/fish/background_5c.png';
+import settingImg from '../img/fish/Setting.png';
 
-const CenterFishTank = ({ tasks , onTaskDelete }) => {
+const CenterFishTank = ({ tasks }) => {
+  const [waterHue, setWaterHue] = useState(0);
+  const [floorHue, setFloorHue] = useState(0);
+  const [showSettings, setShowSettings] = useState(false);
+  const [rotation, setRotation] = useState(0);
+
+  const handleWaterHueChange = (event) => {
+    setWaterHue(parseInt(event.target.value));
+  };
+
+  const handleFloorHueChange = (event) => {
+    setFloorHue(parseInt(event.target.value));
+  };
+
+  const toggleSettings2 = () => {
+    setShowSettings(!showSettings);
+    if (rotation === 0) {
+      setRotation(25);
+    } else {
+      setRotation(0);
+    }
+  };
 
   const renderTimeScale = () => {
     const timeScale = [];
@@ -57,10 +82,6 @@ const CenterFishTank = ({ tasks , onTaskDelete }) => {
     const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 204 - 2;
     return `${currentPosition}vh`;
   }
-
-  const handleTaskDelete = (taskId) => {
-    onTaskDelete(taskId);
-  };
   
 
   return (
@@ -85,10 +106,49 @@ const CenterFishTank = ({ tasks , onTaskDelete }) => {
               selectedTime={task.time}
               description={task.description}
             />
-            <button onClick={() => handleTaskDelete(task.id)} className="delete-task-button">Delete</button>
           </div>
         ))}
       </div>
+      <img
+        src={bg1}
+        className="background-water"
+        style={{ filter: `hue-rotate(${waterHue}deg)` }}
+      />
+      <img
+        src={f1}
+        className="background-floor"
+        style={{
+          filter: `hue-rotate(${floorHue}deg)`,
+        }}
+      />
+      <img src={settingImg} alt="Settings" className="setting-image" onClick={toggleSettings2} style={{ transform: `rotate(${rotation}deg)` }} />
+      {showSettings && (
+        <div className='setting-container fade-in'>
+          <div className="slider-container">
+            <label htmlFor="waterHueSlider" className='label-w'>Water Color: </label>
+            <input
+              type="range"
+              min="0"
+              max="350"
+              value={waterHue}
+              onChange={handleWaterHueChange}
+              className="hue-slider water-slider"
+            />
+            <label htmlFor="floorHueSlider" className='label-f'>Floor Color: </label>
+            <input
+              type="range"
+              min="0"
+              max="360"
+              value={floorHue}
+              onChange={handleFloorHueChange}
+              className="hue-slider floor-slider"
+            />
+          </div>
+          <img src={bg1} className="background-water-small" style={{ filter: `hue-rotate(${waterHue}deg)` }}/>
+          <img src={f1} className="background-floor-small" style={{ filter: `hue-rotate(${floorHue}deg) saturate(100%)` }}/>
+          <img src ={fishTank} className="fishTank-small"/>
+        </div>
+      )}
     </div>
   );
 };
