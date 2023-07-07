@@ -188,3 +188,35 @@ input[type="range"]::-ms-fill-upper {
 .label-w, .label-f{
   font-size: 3vh;
 }
+
+.fullscreen-button {
+  /* Add your styles for the full-screen button */
+}
+
+.Expand-b {
+  background-color: #3dacf0;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 99999999;
+  font-size: 3vh;
+  transition: background-color 0.3s ease;
+  transition: 0.3s;
+  color: white;
+  padding: 1vh;
+}
+
+.Expand-b:hover{
+  font-size: 3.5vh;
+  cursor: pointer;
+}
+
+.normal{
+  top: 50vh;
+  left: 30vw;
+}
+
+.top-left {
+  top: 6vh;
+  left: 10vw;
+}

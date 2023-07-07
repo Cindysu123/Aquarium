@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Fish from './Fish';
+import ExpandedFishTank from './ExpandedFishTank'
 import './CenterFishTank.css';
 import bg1 from '../img/fish/bg1.png';
 import f1 from '../img/fish/f1.png';
 import fishTank from '../img/fish/background_5c.png';
 import settingImg from '../img/fish/Setting.png';
 
-const CenterFishTank = ({ tasks }) => {
+const CenterFishTank = ({ tasks}) => {
   const [waterHue, setWaterHue] = useState(0);
   const [floorHue, setFloorHue] = useState(0);
   const [showSettings, setShowSettings] = useState(false);
   const [rotation, setRotation] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+
 
   const handleWaterHueChange = (event) => {
     setWaterHue(parseInt(event.target.value));
@@ -27,6 +30,20 @@ const CenterFishTank = ({ tasks }) => {
     } else {
       setRotation(0);
     }
+  };
+  
+
+  const toggleExpansion = () => {
+    setExpanded(!expanded);
+    if(expanded){
+      document.documentElement.style.overflow = 'auto';
+    }else{
+      document.documentElement.style.overflow = 'hidden';
+    }
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Optionally, you can add smooth scrolling behavior
+    });
   };
 
   const renderTimeScale = () => {
@@ -68,7 +85,7 @@ const CenterFishTank = ({ tasks }) => {
     const totalMinutes = hours * 60 + minutes;
     const timelineStart = 56;
   
-    const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 204;
+    const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 198;
     return `${currentPosition}vh`;
   };
 
@@ -79,13 +96,13 @@ const CenterFishTank = ({ tasks }) => {
     const totalMinutes = hours * 60 + minutes;
     const timelineStart = 56;
   
-    const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 204 - 2;
+    const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 198 - 2;
     return `${currentPosition}vh`;
   }
   
 
   return (
-    <div className="center-fish-tank">
+    <div className={`center-fish-tank`}>
       <div className="timeScaleContent">
         <div className="time-scale">
           {renderTimeScale()}
@@ -97,30 +114,43 @@ const CenterFishTank = ({ tasks }) => {
           <div className="current-time-line" style={{ top: getCurrentTimePosition() }} />
         </div>
       </div>
-      <div className="fish-container">
-        {tasks.map((task) => (
-          <div key={task.id} className="task">
-            <Fish
-              name={task.name}
-              source="CenterFishTank"
-              selectedTime={task.time}
-              description={task.description}
-            />
+      <button onClick={toggleExpansion} className={`Expand-b ${expanded ? 'top-left' : 'normal'}`}>
+        {expanded ? 'Collapse' : 'Expand'}
+      </button>
+      {expanded ? (
+        <ExpandedFishTank
+          tasks={tasks}
+          waterHue={waterHue}
+          floorHue={floorHue}
+        />
+       ) : (
+        <div className='actual-fish-tank'>
+          <div className="fish-container">
+            {tasks.map((task) => (
+              <div key={task.id} className="task2">
+                <Fish
+                  name={task.name}
+                  source="CenterFishTank"
+                  selectedTime={task.time}
+                  description={task.description}
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <img
-        src={bg1}
-        className="background-water"
-        style={{ filter: `hue-rotate(${waterHue}deg)` }}
-      />
-      <img
-        src={f1}
-        className="background-floor"
-        style={{
-          filter: `hue-rotate(${floorHue}deg)`,
-        }}
-      />
+          <img
+            src={bg1}
+            className="background-water"
+            style={{ filter: `hue-rotate(${waterHue}deg)` }}
+          />
+          <img
+            src={f1}
+            className="background-floor"
+            style={{
+              filter: `hue-rotate(${floorHue}deg)`,
+            }}
+          />
+        </div>
+      )}
       <img src={settingImg} alt="Settings" className="setting-image" onClick={toggleSettings2} style={{ transform: `rotate(${rotation}deg)` }} />
       {showSettings && (
         <div className='setting-container fade-in'>

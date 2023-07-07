@@ -63,9 +63,9 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
             onChange={(event) => handleTankChange(task.id, event)}
             className="tank-select"
           >
-            {tankName !== "To do" && <option value="To do">To do</option>}
-            {tankName !== "In Progress" && <option value="In Progress">In Progress</option>}
-            {tankName !== "Completed" && <option value="Completed">Completed</option>}
+            {<option value="To do">To do</option>}
+            {<option value="In Progress">In Progress</option>}
+            {<option value="Completed">Completed</option>}
           </select>
           <button onClick={() => handleTaskDelete(task.id)} className="delete-task-button">
             Delete

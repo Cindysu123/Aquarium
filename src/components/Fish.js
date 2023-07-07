@@ -7,8 +7,6 @@ import img4 from '../img/fish/fish_4.gif';
 import img5 from '../img/fish/fish_5.gif';
 
 const Fish = ({ name, source, selectedTime, description }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   const getRandomColor = () => {
     let randomColor = `#473b78`;
@@ -26,8 +24,8 @@ const Fish = ({ name, source, selectedTime, description }) => {
     return randomColor;
   };
 
-  // const topPosition = (215) + 'vh';
   const topPosition = (45 + (selectedTime-7) * 10.5) + 'vh';
+  const topPosition2 = ((selectedTime-7) * 10.5)/2-20 + 'vh';
 
   if (!document.fishColors) {
     document.fishColors = {};
@@ -43,9 +41,6 @@ if (source === 'CenterFishTank') {
   fishStyle.position = 'absolute';
   fishStyle.top = topPosition;
   fishStyle.width = '60vh';
-  if (!isHovered) {
-    fishStyle.animationName = 'swimAnimation';
-  }
 }
 
 if (source === 'FishTank') {
@@ -56,27 +51,20 @@ if (source === 'FishTank') {
   fishStyle.margin = '10px';
 }
 
-
-  useEffect(() => {
-    const flipInterval = setInterval(() => {
-      setIsFlipped((prevState) => !prevState);
-    }, 2000);
-
-    return () => {
-      clearInterval(flipInterval);
-    };
-  }, []);
+if(source === 'ExpandedFishTank'){
+  fishStyle.position = 'absolute';
+  fishStyle.top = topPosition2;
+  fishStyle.width = '60vh';
+}
 
   return (
     <div
-      className={`fish ${source === 'CenterFishTank' ? 'fish-center' : ''}`}
+      className={`fish ${source === 'CenterFishTank' ? 'fish-center' : ''} ${source === 'ExpandedFishTank' ? 'fish-expand' : ''}`}
       style={fishStyle}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <h4 className="fish-text_name">{name} ({selectedTime}:00)</h4>
       <h4 className="fish-text_description">{description}</h4>
-      <img src={img2} style={isFlipped & source === 'CenterFishTank' ? { transform: 'scaleX(-1)' } : { transform: 'scaleX(1)' }} alt="Fish" className='fish-image1' />
+      <img src={img2} alt="Fish" className='fish-image1' />
     </div>
   );
 };
