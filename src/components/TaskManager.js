@@ -105,18 +105,13 @@ const TaskManager = () => {
                 <option value="In Progress">In Progress</option>
                 <option value="Completed">Completed</option>
               </select>
-              <select value={selectedTime} onChange={handleTimeChange} className='Select time'>
-                <option value="">Select Time</option>
-                {[...Array(24).keys()].slice(7, 24).map(hour => {
-                  const displayHour = hour > 12 ? hour - 12 : hour;
-                  const period = hour >= 12 ? 'PM' : 'AM';
-                  return (
-                    <option key={hour} value={hour}>
-                      {displayHour}:00 {period}
-                    </option>
-                  );
-                })}
-              </select>
+              {/* Replace the select element with an input element */}
+              <input
+                type="time"
+                value={selectedTime}
+                onChange={handleTimeChange}
+                className='Select time' // You can style this input element as needed
+              />
               <input
                 type="date"
                 value={selectedDate}

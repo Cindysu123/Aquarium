@@ -9,6 +9,7 @@ import img5 from '../img/fish/fish_5.gif';
 const Fish = ({ name, source, selectedTime, description, date }) => {
   // Array of fish images
   const fishImages = [img1, img2, img3, img4, img5];
+  const [totalMinutes, settotalMinutes] = useState(0);
 
   const getRandomColor = () => {
     let randomColor = `#473b78`;
@@ -26,8 +27,19 @@ const Fish = ({ name, source, selectedTime, description, date }) => {
     return randomColor;
   };
 
-  const topPosition = `${45 + (selectedTime - 7) * 10.5}vh`;
-  const topPosition2 = `${(selectedTime - 7) * 10.5 / 2 - 20}vh`;
+  const convertToMinutes = () => {
+    var timeParts = selectedTime.split(":");
+    var hours = parseInt(timeParts[0]);
+    var minutes = parseInt(timeParts[1]);
+  
+    var totalMinutes = (hours * 60) + minutes;
+  
+    return totalMinutes;
+  }
+  
+  // const topPosition = `${50 + (convertToMinutes() - 7 * 60) / 5.8}vh`;
+  const topPosition = `${53 + (convertToMinutes() - (7 * 60)) / 5.6}vh`;
+  const topPosition2 = `${(convertToMinutes() - (7*60)) / 6 / 2 - 20}vh`;
 
   if (!document.fishColors) {
     document.fishColors = {};
@@ -71,7 +83,7 @@ const Fish = ({ name, source, selectedTime, description, date }) => {
       style={fishStyle}
     >
       <h4 className="fish-text_name">
-        {name}--{selectedTime}:00
+        {name}--{selectedTime}
       </h4>
       <p className={`fish-text_date ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>
         {date}
