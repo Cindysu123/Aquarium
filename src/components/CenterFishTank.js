@@ -7,6 +7,8 @@ import f1 from '../img/fish/f1.png';
 import fishTank from '../img/fish/background_5c.png';
 import settingImg from '../img/fish/Setting.png';
 
+import Plants from './plants';
+
 const CenterFishTank = ({ tasks }) => {
   const [waterHue, setWaterHue] = useState(0);
   const [floorHue, setFloorHue] = useState(0);
@@ -194,7 +196,7 @@ const CenterFishTank = ({ tasks }) => {
           <img
             src={bg1}
             className="background-water"
-            style={{ filter: `hue-rotate(${waterHue}deg)` }}
+            style={{ filter: `hue-rotate(${waterHue}deg) blur(2px)` }}
           />
           <img
             src={f1}
@@ -203,6 +205,8 @@ const CenterFishTank = ({ tasks }) => {
               filter: `hue-rotate(${floorHue}deg)`,
             }}
           />
+          <Plants
+            source = 'center'/>
         </div>
       )}
       <img src={settingImg} alt="Settings" className="setting-image" onClick={toggleSettings2} style={{ transform: `rotate(${rotation}deg)` }} />

@@ -1,10 +1,10 @@
 .expanded-fish-tank {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
+    left: -5vw;
+    width: 110vw;
     height: 100vh;
-    z-index: 9999; /* Adjust the z-index as needed */
+    z-index: 9991; /* Adjust the z-index as needed */
   }
   
   
@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 110%;
     height: 100%;
   }
   
@@ -28,7 +28,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 110vw;
     height: 80vh;
   }
   
@@ -36,7 +36,7 @@
     position: absolute;
     top: 80vh;
     left: 0;
-    width: 100vw;
+    width: 110vw;
     height: 20vh;
   }
 
@@ -44,7 +44,7 @@
     position: absolute;
     top: 5vh;
     left: 5vw;
-    z-index: 99999;
+    z-index: 9992;
     background: transparent;
     border: none;
     cursor: pointer;

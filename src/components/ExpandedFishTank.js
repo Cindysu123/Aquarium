@@ -6,9 +6,11 @@ import f1 from '../img/fish/f1.png';
 import underwaterSound from '../Sound/underwater.mp3';
 import On from '../img/fish/Volume Up.png';
 import Off from '../img/fish/Volume Off.png';
+import Plants from './plants';
 
 const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const audio = new Audio(underwaterSound);
 
   useEffect(() => {
@@ -33,8 +35,21 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
     setIsMusicPlaying(!isMusicPlaying);
   };
 
+  const handleMouseMove = (event) => {
+    setMousePosition({ x: event.clientX, y: event.clientY });
+  };
+
+  const calculateMovementOffset = (movementRange) => {
+    const maxOffset = 10;
+    const offset = (window.innerWidth / 2 - mousePosition.x) / (window.innerWidth / 2) * movementRange;
+    return Math.max(-maxOffset, Math.min(maxOffset, offset));
+  };
+
+  const waterOffset = calculateMovementOffset(10);
+  const floorOffset = calculateMovementOffset(2);
+
   return (
-    <div className="expanded-fish-tank">
+    <div className="expanded-fish-tank" onMouseMove={handleMouseMove}>
       <div className="fish-container">
         {tasks.map((task) => (
           <div key={task.id} className="task2">
@@ -43,7 +58,7 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
               source="ExpandedFishTank"
               selectedTime={task.time}
               description={task.description}
-              date = {task.date}
+              date={task.date}
             />
           </div>
         ))}
@@ -51,17 +66,23 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
       <img
         src={bg1}
         className="background-water"
-        style={{ filter: `hue-rotate(${waterHue}deg)` }}
+        style={{
+          filter: `hue-rotate(${waterHue}deg) blur(2px)`,
+          transform: `translateX(${waterOffset}px)`,
+        }}
       />
       <img
         src={f1}
         className="background-floor"
         style={{
           filter: `hue-rotate(${floorHue}deg)`,
+          transform: `translateX(${floorOffset}px)`,
         }}
       />
+      <Plants
+        source = 'expanded'/>
       <button onClick={toggleMusic} className="music-b">
-        <img src={isMusicPlaying ? On : Off} alt="Music Icon"/>
+        <img src={isMusicPlaying ? On : Off} alt="Music Icon" />
       </button>
     </div>
   );

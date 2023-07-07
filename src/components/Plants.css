@@ -1,0 +1,113 @@
+.plants-container{
+    position: absolute;
+}
+
+.center-p{
+    top: 174vh;
+    z-index: -1;
+}
+
+.expanded-p{
+    z-index: 9993;
+    top: 30vh;
+}
+
+.plants, .Shell{
+    position: absolute;
+    width: 8vw;
+}
+
+.center-p .p1{
+    top:20vh;
+    left: 2vw;
+}
+.center-p .p5{
+    top:26vh;
+    left: 8vw;
+}
+.center-p .p2{
+    top:21vh;
+    left: 13vw;
+}
+.center-p .p6{
+    top:28vh;
+    left: 18vw;
+}
+.center-p .p3{
+    top:21vh;
+    left: 30vw;
+}
+.center-p .p4{
+    top:25vh;
+    left: 54vw;
+}
+
+.center-p .pl1{
+    top: -3vh;
+    left: 5vw;
+    width: 10vh;
+}
+
+.center-p .pl2{
+    top: 0vh;
+    left: 40vw;
+    width: 10vh;
+}
+
+.center-p .pl3{
+    top: 0vh;
+    left: 25vw;
+    width: 10vh;
+}
+
+.center-p .Shell{
+    top: 50vh;
+    left: 90vh;
+}
+
+
+
+.expanded-p .p5{
+    top:50vh;
+    left: 16vw;
+}
+.expanded-p .p4{
+    top:46vh;
+    left: 20vw;
+}
+.expanded-p .p1{
+    top:41vh;
+    left: 50vw;
+}
+.expanded-p .p3{
+    top:48vh;
+    left: 60vw;
+}
+.expanded-p .p2{
+    top:41vh;
+    left: 30vw;
+}
+.expanded-p .p6{
+    top:55vh;
+    left: 54vw;
+}
+
+.expanded-p .pl1{
+    top: 20vh;
+    left: 5vw;
+}
+
+.expanded-p .pl2{
+    top: 15vh;
+    left: 40vw;
+}
+
+.expanded-p .pl3{
+    top: 15vh;
+    left: 75vw;
+}
+
+.expanded-p .Shell{
+    top: 50vh;
+    left: 90vw;
+}
