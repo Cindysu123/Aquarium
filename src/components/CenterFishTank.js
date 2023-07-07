@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Fish from './Fish';
 import './CenterFishTank.css';
 
-const CenterFishTank = ({ tasks }) => {
+const CenterFishTank = ({ tasks , onTaskDelete }) => {
+
   const renderTimeScale = () => {
     const timeScale = [];
     for (let hour = 7; hour < 24; hour++) {
-      const formattedHour = hour.toString().padStart(2, '0');
+      const formattedHour = hour > 12 ? (hour - 12).toString().padStart(2, '0') : hour.toString().padStart(2, '0');
+      const amOrPm = hour >= 12 ? 'PM' : 'AM';
       timeScale.push(
         <div key={hour} className="time-slot">
-          {formattedHour}:00
+          {formattedHour}{amOrPm}
         </div>
       );
     }
@@ -21,12 +23,14 @@ const CenterFishTank = ({ tasks }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       const date = new Date();
-      const hours = date.getHours().toString().padStart(2, '0');
+      let hours = date.getHours();
+      let ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
       const minutes = date.getMinutes().toString().padStart(2, '0');
-      const formattedTime = `${hours}:${minutes}`;
+      const formattedTime = `${hours}:${minutes} ${ampm}`;
       setCurrentTime(formattedTime);
     }, 1000);
-
+  
     return () => {
       clearInterval(intervalId);
     };
@@ -37,7 +41,10 @@ const CenterFishTank = ({ tasks }) => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const totalMinutes = hours * 60 + minutes;
-    return `${265 + (totalMinutes / 1440)*1486}px`;
+    const timelineStart = 56;
+  
+    const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 204;
+    return `${currentPosition}vh`;
   };
 
   const getCurrentTimePosition2 = () => {
@@ -45,8 +52,16 @@ const CenterFishTank = ({ tasks }) => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const totalMinutes = hours * 60 + minutes;
-    return `${265 + (totalMinutes / 1440)*1486-14}px`;
+    const timelineStart = 56;
+  
+    const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 204 - 2;
+    return `${currentPosition}vh`;
+  }
+
+  const handleTaskDelete = (taskId) => {
+    onTaskDelete(taskId);
   };
+  
 
   return (
     <div className="center-fish-tank">
@@ -70,6 +85,7 @@ const CenterFishTank = ({ tasks }) => {
               selectedTime={task.time}
               description={task.description}
             />
+            <button onClick={() => handleTaskDelete(task.id)} className="delete-task-button">Delete</button>
           </div>
         ))}
       </div>

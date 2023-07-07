@@ -26,7 +26,8 @@ const Fish = ({ name, source, selectedTime, description }) => {
     return randomColor;
   };
 
-  const topPosition = (20 + (selectedTime-7) * 30.5) + '%';
+  // const topPosition = (215) + 'vh';
+  const topPosition = (45 + (selectedTime-7) * 10.5) + 'vh';
 
   if (!document.fishColors) {
     document.fishColors = {};
@@ -41,7 +42,7 @@ const Fish = ({ name, source, selectedTime, description }) => {
 if (source === 'CenterFishTank') {
   fishStyle.position = 'absolute';
   fishStyle.top = topPosition;
-  fishStyle.width = '30%';
+  fishStyle.width = '60vh';
   if (!isHovered) {
     fishStyle.animationName = 'swimAnimation';
   }
@@ -49,8 +50,10 @@ if (source === 'CenterFishTank') {
 
 if (source === 'FishTank') {
   fishStyle.backgroundColor = document.fishColors[name];
-  fishStyle.width = '70%';
+  fishStyle.width = '30vh';
   fishStyle.color = '#51516F';
+  fishStyle.padding = '10px';
+  fishStyle.margin = '10px';
 }
 
 

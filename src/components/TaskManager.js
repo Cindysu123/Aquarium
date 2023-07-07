@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FishTank from './FishTank';
 import CenterFishTank from './CenterFishTank';
 import './TaskManager.css';
-import calendar from '../img/Calendarplaceholder.png'
+import calendar from '../img/Calendarplaceholder.png';
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
@@ -11,6 +11,17 @@ const TaskManager = () => {
   const [selectedTime, setSelectedTime] = useState('');
   const [description, setDescription] = useState('');
 
+  useEffect(() => {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
   const handleAddTask = () => {
     if (inputValue.trim()) {
       const newTask = {
@@ -18,12 +29,17 @@ const TaskManager = () => {
         name: inputValue,
         tank: selectedTank,
         time: selectedTime,
-        description: description  // Include description in the new task object
+        description: description,
       };
       setTasks([...tasks, newTask]);
       setInputValue('');
-      setDescription('');  // Reset the description input
+      setDescription('');
     }
+  };
+
+  const handleTaskDelete = (taskId) => {
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
   };
   
   const handleInputChange = event => {
@@ -80,9 +96,15 @@ const TaskManager = () => {
               </select>
               <select value={selectedTime} onChange={handleTimeChange} className='Select time'>
                 <option value="">Select Time</option>
-                {[...Array(24).keys()].slice(7, 24).map(hour => (
-                  <option key={hour} value={hour}>{hour}:00</option>
-                ))}
+                {[...Array(24).keys()].slice(7, 24).map(hour => {
+                  const displayHour = hour > 12 ? hour - 12 : hour;
+                  const period = hour >= 12 ? 'PM' : 'AM';
+                  return (
+                    <option key={hour} value={hour}>
+                      {displayHour}:00 {period}
+                    </option>
+                  );
+                })}
               </select>
               <button onClick={handleAddTask} className='Add-Task'>Add Task</button>
             </div>
@@ -93,6 +115,7 @@ const TaskManager = () => {
             tasks={tasks}
             selectedTime={selectedTime}
             description={description} // Pass the description prop
+            onTaskDelete={handleTaskDelete} // Pass the handleTaskDelete function as a prop
           />
         </div>
       </div>
@@ -101,22 +124,25 @@ const TaskManager = () => {
         <div className="fish-tanks-wrapper">
           <div className="fish-tanks">
               <FishTank
-                  tasks={tasks.filter(task => task.tank === 'To do')}
-                  tankName="To do"
-                  selectedTime={selectedTime}
-                  description={description} // Pass the description prop
+                tasks={tasks.filter(task => task.tank === 'To do')}
+                tankName="To do"
+                selectedTime={selectedTime}
+                description={description}
+                onTaskDelete={handleTaskDelete} // Pass the handleTaskDelete function as a prop
               />
               <FishTank
                   tasks={tasks.filter(task => task.tank === 'In Progress')}
                   tankName="In Progress"
                   selectedTime={selectedTime}
                   description={description} // Pass the description prop
+                  onTaskDelete={handleTaskDelete} // Pass the handleTaskDelete function as a prop
               />
               <FishTank
                   tasks={tasks.filter(task => task.tank === 'Completed')}
                   tankName="Completed"
                   selectedTime={selectedTime}
                   description={description} // Pass the description prop
+                  onTaskDelete={handleTaskDelete} // Pass the handleTaskDelete function as a prop
               />
           </div>
         </div>

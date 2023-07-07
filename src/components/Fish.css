@@ -1,11 +1,17 @@
 .fish {
-  padding: 5px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 10px;
   border-radius: 10px;
+}
+
+.fish-text_name{
+  font-size: 3vh;
+}
+
+.fish-text_description{
+  font-size: 3vh;
 }
 
 .fish-center{
@@ -37,13 +43,9 @@
   width: 20%;
 }
 
-.fish-text_name{
-  font-size: 20px;
-}
-
 .fish-text_description{
   font-weight: normal;
-  font-size: 16px;
-  padding: 8px;
+  font-size: 3vh;
+  padding: 1vh;
 }
 

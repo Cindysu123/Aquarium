@@ -1,8 +1,8 @@
 .fish-tank {
     /* border: 1px solid #ccc; */
-    padding: 10px;
-    margin-bottom: 20px;
-    width: 110%;
+    padding: 2vh;
+    margin-bottom: 2vh;
+    width: 40vh;
   }
   
   .fish-tank-title {
@@ -20,9 +20,9 @@
     color: #473b78;
     border: none;
     border-radius: 10%;
-    width: 20px;
-    height: 20px;
-    font-size: 24px;
+    width: 4vh;
+    height: 4vh;
+    font-size: 3vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,11 +39,38 @@
     align-items: center;
     margin-left: 6%;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 5vh;
+    height: 5vh;
     background-color: #4da6ff;
     color: white;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 3vh;
+  }
+
+  .tank-name{
+    font-size: 3vh;
+  }
+
+  .delete-task-button {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 1vh 2vh;
+    font-size: 2.6vh;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 2vh;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-task-button:hover {
+    background-color: #ff3333;
+  }
+
+  .task{
+    margin: 1vh;
+    padding: 1vh;
+    background-color: #dff6fd;
+    border-radius: 10px;
   }
   
