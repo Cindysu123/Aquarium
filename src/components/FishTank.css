@@ -73,4 +73,24 @@
     background-color: #dff6fd;
     border-radius: 10px;
   }
+
+  .tank-select {
+    appearance: none;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 2.5vh;
+    width: 18vh;
+    outline: none;
+  }
+  
+  .tank-select:hover {
+    border-color: #999;
+  }
+  
+  .tank-select:focus {
+    border-color: #333;
+    box-shadow: 0 0 5px #aaa;
+  }
+  
   

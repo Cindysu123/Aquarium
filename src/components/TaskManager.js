@@ -7,9 +7,10 @@ import calendar from '../img/Calendarplaceholder.png';
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [selectedTank, setSelectedTank] = useState('To do');
+  const [selectedTank, setSelectedTank] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [description, setDescription] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const storedTasks = localStorage.getItem('tasks');
@@ -23,7 +24,7 @@ const TaskManager = () => {
   }, [tasks]);
 
   const handleAddTask = () => {
-    if (inputValue.trim()) {
+    if (inputValue.trim() && selectedTank && selectedTime) {
       const newTask = {
         id: tasks.length + 1,
         name: inputValue,
@@ -34,6 +35,9 @@ const TaskManager = () => {
       setTasks([...tasks, newTask]);
       setInputValue('');
       setDescription('');
+      setErrorMessage('');
+    } else {
+      setErrorMessage('Please select task type and time.');
     }
   };
 
@@ -90,6 +94,7 @@ const TaskManager = () => {
             />
             <div className="select-wrapper">
               <select value={selectedTank} onChange={handleTankChange} className='Select todo'>
+                <option value="">Select Task Type</option>
                 <option value="To do">To do</option>
                 <option value="In Progress">In Progress</option>
                 <option value="Completed">Completed</option>
@@ -107,6 +112,9 @@ const TaskManager = () => {
                 })}
               </select>
               <button onClick={handleAddTask} className='Add-Task'>Add Task</button>
+              {errorMessage && (
+                <div className="error-message">*{errorMessage}</div>
+              )}
             </div>
           </div>
         </div>
@@ -123,27 +131,30 @@ const TaskManager = () => {
         <img src={calendar} alt="calendar" className="calendar-image" />
         <div className="fish-tanks-wrapper">
           <div className="fish-tanks">
-              <FishTank
-                tasks={tasks.filter(task => task.tank === 'To do')}
-                tankName="To do"
-                selectedTime={selectedTime}
-                description={description}
-                onTaskDelete={handleTaskDelete} // Pass the handleTaskDelete function as a prop
-              />
-              <FishTank
-                  tasks={tasks.filter(task => task.tank === 'In Progress')}
-                  tankName="In Progress"
-                  selectedTime={selectedTime}
-                  description={description} // Pass the description prop
-                  onTaskDelete={handleTaskDelete} // Pass the handleTaskDelete function as a prop
-              />
-              <FishTank
-                  tasks={tasks.filter(task => task.tank === 'Completed')}
-                  tankName="Completed"
-                  selectedTime={selectedTime}
-                  description={description} // Pass the description prop
-                  onTaskDelete={handleTaskDelete} // Pass the handleTaskDelete function as a prop
-              />
+            <FishTank
+              tasks={tasks.filter((task) => task.tank === 'To do')}
+              tankName="To do"
+              selectedTime={selectedTime}
+              description={description}
+              onTaskDelete={handleTaskDelete}
+              setTasks={setTasks} // Pass the setTasks function as a prop
+            />
+            <FishTank
+              tasks={tasks.filter((task) => task.tank === 'In Progress')}
+              tankName="In Progress"
+              selectedTime={selectedTime}
+              description={description}
+              onTaskDelete={handleTaskDelete}
+              setTasks={setTasks} // Pass the setTasks function as a prop
+            />
+            <FishTank
+              tasks={tasks.filter((task) => task.tank === 'Completed')}
+              tankName="Completed"
+              selectedTime={selectedTime}
+              description={description}
+              onTaskDelete={handleTaskDelete}
+              setTasks={setTasks} // Pass the setTasks function as a prop
+            />
           </div>
         </div>
       </div>

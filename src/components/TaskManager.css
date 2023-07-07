@@ -108,3 +108,11 @@
 .calendar-image {
   height: 50vh;
 }
+
+.error-message {
+  padding-left: 2vh;
+  display: inline-block;
+  color: #ff5858;
+  font-weight: bold;
+  font-size: 2.5vh;
+}
