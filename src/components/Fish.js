@@ -6,7 +6,7 @@ import img3 from '../img/fish/fish_3.gif';
 import img4 from '../img/fish/fish_4.gif';
 import img5 from '../img/fish/fish_5.gif';
 
-const Fish = ({ name, source, selectedTime, description }) => {
+const Fish = ({ name, source, selectedTime, description, date }) => {
   // Array of fish images
   const fishImages = [img1, img2, img3, img4, img5];
 
@@ -71,9 +71,12 @@ const Fish = ({ name, source, selectedTime, description }) => {
       style={fishStyle}
     >
       <h4 className="fish-text_name">
-        {name} ({selectedTime}:00)
+        {name}--{selectedTime}:00
       </h4>
-      <h4 className={`fish-text_description ${source === 'SearchResults' ? 'remove' : ''}`}>{description}</h4>
+      <p className={`fish-text_date ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>
+        {date}
+      </p>
+      <p className={`fish-text_description ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>{description}</p>
       <img src={selectedImage} alt="Fish" className="fish-image1" />
     </div>
   );

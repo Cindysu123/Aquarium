@@ -57,6 +57,7 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
             source="FishTank"
             selectedTime={task.time}
             description={task.description}
+            date={task.date}
           />
           <select
             value={selectedTank}

@@ -6,22 +6,30 @@
   border-radius: 10px;
 }
 
-.fish-text_name{
+.fish:hover {
+  cursor: pointer;
+}
+
+.fish-center:hover{
+  animation-play-state: paused; /* Pause the animation on hover */
+}
+
+.fish-text_name {
   font-size: 3vh;
 }
 
-.fish-text_description{
+.fish-text_description {
   font-size: 3vh;
 }
 
-.fish-center{
+.fish-center {
   animation-fill-mode: both;
   animation-name: swimAnimation;
   animation-duration: 8s;
   animation-iteration-count: infinite;
 }
 
-.fish-expand{
+.fish-expand {
   animation: swim 20s linear infinite;
 }
 
@@ -29,13 +37,13 @@
   0% {
     transform: translateX(0%) scaleX(1);
   }
-  45%{
+  45% {
     transform: translateX(100%) scaleX(1);
   }
   50% {
     transform: translateX(100%) scaleX(-1);
   }
-  95%{
+  95% {
     transform: translateX(0%) scaleX(-1);
   }
   100% {
@@ -52,7 +60,7 @@
   }
   45% {
     transform: translateX(32vw) translateY(10vh) scaleX(1);
-  } 
+  }
   50% {
     transform: translateX(32vw) translateY(10vh) scaleX(-1);
   }
@@ -67,25 +75,28 @@
   }
 }
 
-
-
 .fish-text_name,
 .fish-text_time,
+.fish-text_date,
 .fish-text_description {
-  margin: 0;
+  margin: 0.4vh;
 }
 
 .fish-image1 {
   width: 20%;
 }
 
-.fish-text_description{
+.fish-text_description {
   font-weight: normal;
   font-size: 3vh;
-  padding: 1vh;
 }
 
-.remove{
+.Onlyhover {
   display: none;
+  transition: opacity 1s ease; /* smooth transition for opacity */
 }
 
+.fish:hover > .Onlyhover {
+  display: block;
+  opacity: 1; /* change opacity to 1 on hover */
+}

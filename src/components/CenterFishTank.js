@@ -7,7 +7,7 @@ import f1 from '../img/fish/f1.png';
 import fishTank from '../img/fish/background_5c.png';
 import settingImg from '../img/fish/Setting.png';
 
-const CenterFishTank = ({ tasks}) => {
+const CenterFishTank = ({ tasks }) => {
   const [waterHue, setWaterHue] = useState(0);
   const [floorHue, setFloorHue] = useState(0);
   const [showSettings, setShowSettings] = useState(false);
@@ -15,17 +15,22 @@ const CenterFishTank = ({ tasks}) => {
   const [expanded, setExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredFish, setFilteredFish] = useState([]);
+  const [selectedDate, setSelectedDate] = useState('');
 
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
   useEffect(() => {
-    const filtered = tasks.filter(task =>
-      task.name.toLowerCase().includes(searchQuery.toLowerCase())
+    const filtered = tasks.filter((task) =>
+      task.date === selectedDate || selectedDate === ''
     );
     setFilteredFish(filtered);
-  }, [tasks, searchQuery]);
-
+  }, [tasks, selectedDate]);
 
   const handleWaterHueChange = (event) => {
     setWaterHue(parseInt(event.target.value));
@@ -43,13 +48,12 @@ const CenterFishTank = ({ tasks}) => {
       setRotation(0);
     }
   };
-  
 
   const toggleExpansion = () => {
     setExpanded(!expanded);
-    if(expanded){
+    if (expanded) {
       document.documentElement.style.overflow = 'auto';
-    }else{
+    } else {
       document.documentElement.style.overflow = 'hidden';
     }
     window.scrollTo({
@@ -111,6 +115,13 @@ const CenterFishTank = ({ tasks}) => {
     const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 198 - 2;
     return `${currentPosition}vh`;
   }
+
+  useEffect(() => {
+    const filtered = tasks.filter((task) =>
+      task.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredFish(filtered);
+  }, [tasks, searchQuery]);
   
 
   return (
@@ -130,28 +141,35 @@ const CenterFishTank = ({ tasks}) => {
         {expanded ? 'Collapse' : 'Expand'}
       </button>
       <div className='search-container'>
-      <input
-        type="text"
-        placeholder="Search Fish"
-        value={searchQuery}
-        onChange={handleSearchQueryChange}
-        className="fish-search"
-      />
-      {searchQuery && (
-        <div className="search-results">
-          {filteredFish.map((fish) => (
-            <div key={fish.id} className="search-result">
-              <Fish
-                name={fish.name}
-                source="SearchResults"
-                selectedTime={fish.time}
-                description={fish.description}
-              />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+        <input
+          type="text"
+          placeholder="Search Fish"
+          value={searchQuery}
+          onChange={handleSearchQueryChange}
+          className="fish-search"
+        />
+        <input
+          type="date"
+          value={selectedDate}
+          onChange={handleDateChange}
+          className="fish-date"
+        />
+        {searchQuery && (
+          <div className="search-results">
+            {filteredFish.map((fish) => (
+              <div key={fish.id} className="search-result">
+                <Fish
+                  name={fish.name}
+                  source="SearchResults"
+                  selectedTime={fish.time}
+                  description={fish.description}
+                  date = {fish.date}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
       {expanded ? (
         <ExpandedFishTank
           tasks={tasks}
@@ -161,13 +179,14 @@ const CenterFishTank = ({ tasks}) => {
        ) : (
         <div className='actual-fish-tank'>
           <div className="fish-container">
-            {tasks.map((task) => (
+            {filteredFish.map((task) => (
               <div key={task.id} className="task2">
                 <Fish
                   name={task.name}
                   source="CenterFishTank"
                   selectedTime={task.time}
                   description={task.description}
+                  date = {task.date}
                 />
               </div>
             ))}

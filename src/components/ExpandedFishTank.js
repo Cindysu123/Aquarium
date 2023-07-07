@@ -43,6 +43,7 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
               source="ExpandedFishTank"
               selectedTime={task.time}
               description={task.description}
+              date = {task.date}
             />
           </div>
         ))}

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import FishTank from './FishTank';
 import CenterFishTank from './CenterFishTank';
 import './TaskManager.css';
-import calendar from '../img/Calendarplaceholder.png';
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [selectedTank, setSelectedTank] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
   const [description, setDescription] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -24,20 +24,22 @@ const TaskManager = () => {
   }, [tasks]);
 
   const handleAddTask = () => {
-    if (inputValue.trim() && selectedTank && selectedTime) {
+    if (inputValue.trim() && selectedTank && selectedTime && selectedDate) {
       const newTask = {
         id: tasks.length + 1,
         name: inputValue,
         tank: selectedTank,
         time: selectedTime,
+        date: selectedDate,
         description: description,
       };
       setTasks([...tasks, newTask]);
       setInputValue('');
       setDescription('');
+      setSelectedDate('');
       setErrorMessage('');
     } else {
-      setErrorMessage('Please select task type and time.');
+      setErrorMessage('Please select task type, date, and time.');
     }
   };
 
@@ -61,6 +63,10 @@ const TaskManager = () => {
 
   const handleTimeChange = event => {
     setSelectedTime(event.target.value);
+  };
+
+  const handleDateChange = event => {
+    setSelectedDate(event.target.value);
   };
 
   const handleKeyDown = event => {
@@ -111,6 +117,12 @@ const TaskManager = () => {
                   );
                 })}
               </select>
+              <input
+                type="date"
+                value={selectedDate}
+                onChange={handleDateChange}
+                className='Select date' // You can style this input element as needed
+              />
               <button onClick={handleAddTask} className='Add-Task'>Add Task</button>
               {errorMessage && (
                 <div className="error-message">*{errorMessage}</div>
@@ -127,7 +139,6 @@ const TaskManager = () => {
         </div>
       </div>
       <div className='Left'>
-        <img src={calendar} alt="calendar" className="calendar-image" />
         <div className="fish-tanks-wrapper">
           <div className="fish-tanks">
             <FishTank

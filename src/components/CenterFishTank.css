@@ -223,17 +223,36 @@ input[type="range"]::-ms-fill-upper {
 
 .fish-search{
   position: absolute;
-  top: 51vh;
-  left: 40vw;
+  top: 28vh;
+  left: 6vw;
+  width: 16vw;
+  font-size: 2.5vh;
+  padding: 0.5vh;
 }
 
 .search-results{
   position: absolute;
-  top: 60vh;
-  left: 34vw;
+  top: 32vh;
+  left: 6vw;
   z-index: 999;
-  width: 48vh;
-  background: #ffffffdb;
+  width: 40vh;
+  background: #f3f5f9b5;
   padding: 2vh;
   border-radius: 10px;
+}
+
+.fish-date{
+  position: absolute;
+  top: 15vh;
+  left: 6vw;
+  width: 16vw;
+  height: 10vh;
+  font-size: 3vh;
+  font-weight: bold;
+  color: #473b78;
+  border-radius: 10px;
+  border: none;
+  background-color: #f3f5f9;
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
