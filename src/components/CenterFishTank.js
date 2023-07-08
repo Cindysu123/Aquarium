@@ -61,7 +61,6 @@ const CenterFishTank = ({ tasks }) => {
       const date = new Date();
       const hour = date.getHours().toString().padStart(2, '0');
       const minute = date.getMinutes().toString().padStart(2, '0');
-      const formattedTime = `${hour}:${minute}`;
 
       const year = date.getFullYear();
       const month = (date.getMonth() + 1).toString().padStart(2, '0');
