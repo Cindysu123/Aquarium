@@ -223,7 +223,7 @@ input[type="range"]::-ms-fill-upper {
 
 .fish-search{
   position: absolute;
-  top: 28vh;
+  top: 16vh;
   left: 6vw;
   width: 16vw;
   font-size: 2.5vh;
@@ -232,7 +232,7 @@ input[type="range"]::-ms-fill-upper {
 
 .search-results{
   position: absolute;
-  top: 32vh;
+  top: 22vh;
   left: 6vw;
   z-index: 999;
   width: 40vh;
@@ -243,10 +243,10 @@ input[type="range"]::-ms-fill-upper {
 
 .fish-date{
   position: absolute;
-  top: 15vh;
-  left: 6vw;
+  top: 50vh;
+  left: 50vw;
   width: 16vw;
-  height: 10vh;
+  height: 6vh;
   font-size: 3vh;
   font-weight: bold;
   color: #473b78;

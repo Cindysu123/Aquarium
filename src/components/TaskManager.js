@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import FishTank from './FishTank';
 import CenterFishTank from './CenterFishTank';
 import './TaskManager.css';
-import closeImg from '../img/close.png'
+import closeImg from '../img/close.png';
+import moment from 'moment-timezone';
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
@@ -12,24 +13,11 @@ const TaskManager = () => {
   const [selectedDate, setSelectedDate] = useState('');
   const [description, setDescription] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [reminderTask, setReminderTask] = useState(null);
+
 
   useEffect(() => {
-    const storedTasks = localStorage.getItem('tasks');
-    if (storedTasks) {
-      const parsedTasks = JSON.parse(storedTasks);
-      setTasks(parsedTasks);
-      const currentTime = new Date().toLocaleTimeString('en-US', { timeZone: 'America/Chicago', hour12: false }).slice(0, -3);
-      const matchingTask = parsedTasks.find(task => task.time === currentTime);
-      setReminderTask(matchingTask);
-
-      // Start the 5-minute timer for the reminder task, if present
-      if (matchingTask) {
-        setTimeout(() => {
-          setReminderTask(null);
-        }, 5 * 60 * 1000);
-      }
-    }
+    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    setTasks(storedTasks);
   }, []);
 
   useEffect(() => {
@@ -51,19 +39,6 @@ const TaskManager = () => {
       setDescription('');
       setSelectedDate('');
       setErrorMessage('');
-
-      // Check if the added task matches the current US Central Time (hour and minute)
-      const currentTime = new Date().toLocaleTimeString('en-US', { timeZone: 'America/Chicago', hour12: false }).slice(0, -3);
-      if (selectedTime === currentTime) {
-        setReminderTask(newTask);
-
-        // Start the 5-minute timer
-        setTimeout(() => {
-          setReminderTask(null);
-        }, 5 * 60 * 1000);
-      } else {
-        setReminderTask(null);
-      }
     } else {
       setErrorMessage('Please select task type, date, and time.');
     }
@@ -101,26 +76,8 @@ const TaskManager = () => {
     }
   };
 
-  const handleCloseReminder = () => {
-    setReminderTask(null);
-  };
-
   return (
     <div className="TaskManager">
-      {reminderTask && (
-        <>
-          <div className="background-overlay" />
-          <div className="reminder-popup">
-            <p>Reminder: You have a task "{reminderTask.name}" at {reminderTask.time}</p>
-            <img
-              src={closeImg}
-              alt="Close"
-              className="close-img"
-              onClick={handleCloseReminder}
-            />
-          </div>
-        </>
-      )}
       <div className='Right'>
         <div className="Task-input-wrapper">
           <h2 className='add-task'>Add Task</h2>
