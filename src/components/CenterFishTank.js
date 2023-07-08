@@ -17,7 +17,13 @@ const CenterFishTank = ({ tasks }) => {
   const [expanded, setExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredFish, setFilteredFish] = useState([]);
+  const [filteredTodayFish, setFilteredTodayFish] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
+  const [isExpanded, setIsExpanded] = useState(true);
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
@@ -33,6 +39,16 @@ const CenterFishTank = ({ tasks }) => {
     );
     setFilteredFish(filtered);
   }, [tasks, selectedDate]);
+
+  useEffect(() => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+    const filtered2 = tasks.filter((task) => task.date === formattedDate);
+    setFilteredTodayFish(filtered2);
+  }, [tasks]);
 
   const handleWaterHueChange = (event) => {
     setWaterHue(parseInt(event.target.value));
@@ -128,6 +144,22 @@ const CenterFishTank = ({ tasks }) => {
 
   return (
     <div className={`center-fish-tank`}>
+      <div className='today-task'>
+      <div className="task-header">
+        <button onClick={toggleExpand} className='ex-b'>
+          {isExpanded ? '-' : '+'}
+        </button>
+        <span className='Today-t'>Today's Task</span>
+      </div>
+        {isExpanded && filteredTodayFish.map((task) => (
+          <div key={task.id} className="task-today">
+            <div className="task-info">
+              <span className="task-name">{task.name}--</span>
+              <span className="task-time">{task.time}</span>
+            </div>
+          </div>
+        ))}
+      </div>
       <div className="timeScaleContent">
         <div className="time-scale">
           {renderTimeScale()}

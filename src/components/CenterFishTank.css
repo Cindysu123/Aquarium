@@ -256,3 +256,41 @@ input[type="range"]::-ms-fill-upper {
   padding-left: 2vw;
   padding-right: 2vw;
 }
+
+.today-task{
+  padding: 10px;
+  position: absolute;
+  background-color: #f3f5f9;
+  top: 24vh;
+  left: 6vw;
+  width: 32vh;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #51516f;
+}
+
+.task-info{
+  font-weight: normal;
+  padding-left: 3vw;
+  font-size: 1.4vw;
+}
+
+.ex-b{
+  margin-right: 10%;
+    color: #473b78;
+    border: none;
+    border-radius: 10%;
+    width: 4vh;
+    height: 4vh;
+    font-size: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.Today-t{
+  position: absolute;
+  top: 1.5vh;
+  left: 4vw;
+  font-size: 1.4vw;
+}
