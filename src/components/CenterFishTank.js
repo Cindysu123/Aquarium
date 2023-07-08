@@ -18,8 +18,14 @@ const CenterFishTank = ({ tasks }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredFish, setFilteredFish] = useState([]);
   const [filteredTodayFish, setFilteredTodayFish] = useState([]);
+  const [filteredRemindFish, setFilteredRemindFish] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
   const [isExpanded, setIsExpanded] = useState(true);
+  const [showReminder, setShowReminder] = useState(true);
+
+  const handleReminderClose = () => {
+    setShowReminder(false);
+  };
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -48,6 +54,38 @@ const CenterFishTank = ({ tasks }) => {
     const formattedDate = `${year}-${month}-${day}`;
     const filtered2 = tasks.filter((task) => task.date === formattedDate);
     setFilteredTodayFish(filtered2);
+  }, [tasks]);
+
+  useEffect(() => {
+    const updateFilteredRemindFish = () => {
+      const date = new Date();
+      const hour = date.getHours().toString().padStart(2, '0');
+      const minute = date.getMinutes().toString().padStart(2, '0');
+      const formattedTime = `${hour}:${minute}`;
+
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+
+      const filtered3 = tasks.filter((task) => {
+        const [taskHour, taskMinute] = task.time.split(':').map((timePart) => parseInt(timePart));
+        return (
+          task.date === formattedDate &&
+          taskHour === parseInt(hour) &&
+          taskMinute <= parseInt(minute) + 5 &&
+          taskMinute >= parseInt(minute) - 5
+        );
+      });
+
+      setFilteredRemindFish(filtered3);
+    };
+
+    updateFilteredRemindFish();
+
+    const interval = setInterval(updateFilteredRemindFish, 1000);
+
+    return () => clearInterval(interval);
   }, [tasks]);
 
   const handleWaterHueChange = (event) => {
@@ -160,6 +198,24 @@ const CenterFishTank = ({ tasks }) => {
           </div>
         ))}
       </div>
+      {showReminder && (
+        <div className="reminder">
+          Reminder:
+          {filteredRemindFish.map((task) => (
+            <div key={task.id} className="task-close">
+              <div className="task-info-close">
+                Time to work on
+                <span className="task-name-close">{task.name} at </span>
+                <span className="task-time-close">{task.time}</span>
+                <div className="task-description-close">{task.description}</div>
+              </div>
+            </div>
+          ))}
+          <button onClick={handleReminderClose} className="close-button">
+            Close
+          </button>
+        </div>
+      )}
       <div className="timeScaleContent">
         <div className="time-scale">
           {renderTimeScale()}

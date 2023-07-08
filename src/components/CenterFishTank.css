@@ -198,7 +198,7 @@ input[type="range"]::-ms-fill-upper {
   border: none;
   border-radius: 5px;
   position: absolute;
-  z-index: 99999999;
+  z-index: 99999998;
   font-size: 3vh;
   transition: background-color 0.3s ease;
   transition: 0.3s;
@@ -267,6 +267,7 @@ input[type="range"]::-ms-fill-upper {
   border-radius: 5px;
   font-weight: bold;
   color: #51516f;
+  z-index: 99;
 }
 
 .task-info{
@@ -293,4 +294,16 @@ input[type="range"]::-ms-fill-upper {
   top: 1.5vh;
   left: 4vw;
   font-size: 1.4vw;
+}
+
+.reminder{
+  position: absolute;
+  top: 40vh;
+  left: 35vw;
+  background-color: #f3f5f9;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 99999999;
+  font-size: 1.4vw;
+  width: 30vw;
 }
