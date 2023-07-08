@@ -46,7 +46,7 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
   };
 
   const waterOffset = calculateMovementOffset(10);
-  const floorOffset = calculateMovementOffset(2);
+  const floorOffset = 0;
 
   return (
     <div className="expanded-fish-tank" onMouseMove={handleMouseMove}>
@@ -79,8 +79,7 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
           transform: `translateX(${floorOffset}px)`,
         }}
       />
-      <Plants
-        source = 'expanded'/>
+      <Plants source = 'expanded'/>
       <button onClick={toggleMusic} className="music-b">
         <img src={isMusicPlaying ? On : Off} alt="Music Icon" />
       </button>
