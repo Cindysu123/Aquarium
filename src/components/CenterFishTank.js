@@ -6,6 +6,7 @@ import bg1 from '../img/fish/bg1.png';
 import f1 from '../img/fish/f1.png';
 import fishTank from '../img/fish/background_5c.png';
 import settingImg from '../img/fish/Setting.png';
+import NoteIon from '../img/Note.png'
 
 import Plants from './plants';
 
@@ -22,6 +23,12 @@ const CenterFishTank = ({ tasks }) => {
   const [selectedDate, setSelectedDate] = useState('');
   const [isExpanded, setIsExpanded] = useState(true);
   const [showReminder, setShowReminder] = useState();
+  const [userInput, setUserInput] = useState(''); // New state variable to store user input
+  const [showInput, setShowInput] = useState(false);
+
+  const handleImageClick = () => {
+    setShowInput((prevShowInput) => !prevShowInput);
+  };
 
   const handleReminderClose = () => {
     setShowReminder(false);
@@ -56,8 +63,8 @@ const CenterFishTank = ({ tasks }) => {
     setFilteredTodayFish(filtered2);
   }, [tasks]);
 
+  let Oldfiltered3 = 0;
   useEffect(() => {
-    let Oldfiltered3 = 0;
     const updateFilteredRemindFish = () => {
       const date = new Date();
       const hour = date.getHours().toString().padStart(2, '0');
@@ -79,11 +86,13 @@ const CenterFishTank = ({ tasks }) => {
         );
       });
 
-      if(filtered3.length > 0 && Oldfiltered3 != filtered3.length){
+      if(filtered3.length > 0 && Oldfiltered3 !== filtered3.length){
         setShowReminder(true);
+        console.log(Oldfiltered3)
+        console.log(filtered3.length)
         Oldfiltered3 = filtered3.length;
       }
-
+      console.log(Oldfiltered3)
       setFilteredRemindFish(filtered3);
     };
 
@@ -178,6 +187,35 @@ const CenterFishTank = ({ tasks }) => {
     return `${currentPosition}vh`;
   }
 
+  const handleSave = () => {
+    const currentDate = selectedDate || new Date().toISOString().split('T')[0];
+    const storedData = JSON.parse(localStorage.getItem('userInputData')) || {};
+    storedData[currentDate] = userInput;
+    localStorage.setItem('userInputData', JSON.stringify(storedData));
+  };
+
+  const handleClear = () => {
+    const currentDate = selectedDate || new Date().toISOString().split('T')[0];
+    const storedData = JSON.parse(localStorage.getItem('userInputData')) || {};
+    delete storedData[currentDate];
+    localStorage.setItem('userInputData', JSON.stringify(storedData));
+    setUserInput('');
+  };
+  
+  useEffect(() => {
+    const currentDate = selectedDate || new Date().toISOString().split('T')[0];
+    const storedData = JSON.parse(localStorage.getItem('userInputData')) || {};
+    const userInputForDate = storedData[currentDate] || '';
+    setUserInput(userInputForDate);
+  }, [selectedDate]);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'userInput') {
+      setUserInput(value);
+    }
+  };
+
   useEffect(() => {
     const filtered = tasks.filter((task) =>
       task.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -188,6 +226,30 @@ const CenterFishTank = ({ tasks }) => {
 
   return (
     <div className={`center-fish-tank`}>
+      <img
+        src={NoteIon}
+        className='Note-b'
+        onClick={handleImageClick}
+        alt="Note"
+      />
+      {showInput && (
+        <div>
+          <textarea
+              className='User-input text-input'
+              name="userInput"
+              value={userInput}
+              onChange={handleInputChange}
+              placeholder="Daily Note"
+              style={{ height: userInput.split('\n').length * 1.5 + 'em' }}
+            />
+          <button onClick={handleSave} className="save-button">
+            Save
+          </button>
+          <button onClick={handleClear} className="clear-button">
+            Clear
+          </button>
+        </div>
+      )}
       <div className='today-task'>
       <div className="task-header">
         <button onClick={toggleExpand} className='ex-b'>
@@ -205,21 +267,23 @@ const CenterFishTank = ({ tasks }) => {
         ))}
       </div>
       {showReminder && (
-        <div className="reminder">
-          Reminder:
-          {filteredRemindFish.map((task) => (
-            <div key={task.id} className="task-close">
-              <div className="task-info-close">
-                Time to work on
-                <span className="task-name-close">{task.name} at </span>
-                <span className="task-time-close">{task.time}</span>
-                <div className="task-description-close">{task.description}</div>
+        <div className='black-bg'>
+          <div className="reminder">
+            Reminder:
+            {filteredRemindFish.map((task) => (
+              <div key={task.id} className="task-close">
+                <div className="task-info-close">
+                  Time to work on
+                  <span className="task-name-close">{task.name} at </span>
+                  <span className="task-time-close">{task.time}</span>
+                  <div className="task-description-close">{task.description}</div>
+                </div>
               </div>
-            </div>
-          ))}
-          <button onClick={handleReminderClose} className="close-button">
-            Close
-          </button>
+            ))}
+            <button onClick={handleReminderClose} className="close-button">
+              Close
+            </button>
+          </div>
         </div>
       )}
       <div className="timeScaleContent">

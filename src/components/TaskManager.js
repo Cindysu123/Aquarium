@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import FishTank from './FishTank';
 import CenterFishTank from './CenterFishTank';
 import './TaskManager.css';
-import closeImg from '../img/close.png';
-import moment from 'moment-timezone';
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
@@ -13,7 +11,6 @@ const TaskManager = () => {
   const [selectedDate, setSelectedDate] = useState('');
   const [description, setDescription] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
 
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -107,18 +104,17 @@ const TaskManager = () => {
                 <option value="In Progress">In Progress</option>
                 <option value="Completed">Completed</option>
               </select>
-              {/* Replace the select element with an input element */}
               <input
                 type="time"
                 value={selectedTime}
                 onChange={handleTimeChange}
-                className='Select time' // You can style this input element as needed
+                className='Select time'
               />
               <input
                 type="date"
                 value={selectedDate}
                 onChange={handleDateChange}
-                className='Select date' // You can style this input element as needed
+                className='Select date'
               />
               <button onClick={handleAddTask} className='Add-Task'>Add Task</button>
               {errorMessage && (
@@ -131,7 +127,7 @@ const TaskManager = () => {
           <CenterFishTank
             tasks={tasks}
             selectedTime={selectedTime}
-            description={description} // Pass the description prop
+            description={description}
           />
         </div>
       </div>
@@ -144,7 +140,7 @@ const TaskManager = () => {
               selectedTime={selectedTime}
               description={description}
               onTaskDelete={handleTaskDelete}
-              setTasks={setTasks} // Pass the setTasks function as a prop
+              setTasks={setTasks}
             />
             <FishTank
               tasks={tasks.filter((task) => task.tank === 'In Progress')}
@@ -152,7 +148,7 @@ const TaskManager = () => {
               selectedTime={selectedTime}
               description={description}
               onTaskDelete={handleTaskDelete}
-              setTasks={setTasks} // Pass the setTasks function as a prop
+              setTasks={setTasks}
             />
             <FishTank
               tasks={tasks.filter((task) => task.tank === 'Completed')}
@@ -160,7 +156,7 @@ const TaskManager = () => {
               selectedTime={selectedTime}
               description={description}
               onTaskDelete={handleTaskDelete}
-              setTasks={setTasks} // Pass the setTasks function as a prop
+              setTasks={setTasks}
             />
           </div>
         </div>
