@@ -21,7 +21,7 @@ const CenterFishTank = ({ tasks }) => {
   const [filteredRemindFish, setFilteredRemindFish] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
   const [isExpanded, setIsExpanded] = useState(true);
-  const [showReminder, setShowReminder] = useState(true);
+  const [showReminder, setShowReminder] = useState();
 
   const handleReminderClose = () => {
     setShowReminder(false);
@@ -57,6 +57,7 @@ const CenterFishTank = ({ tasks }) => {
   }, [tasks]);
 
   useEffect(() => {
+    let Oldfiltered3 = 0;
     const updateFilteredRemindFish = () => {
       const date = new Date();
       const hour = date.getHours().toString().padStart(2, '0');
@@ -71,11 +72,17 @@ const CenterFishTank = ({ tasks }) => {
         const [taskHour, taskMinute] = task.time.split(':').map((timePart) => parseInt(timePart));
         return (
           task.date === formattedDate &&
+          task.remind === 0 &&
           taskHour === parseInt(hour) &&
           taskMinute <= parseInt(minute) + 5 &&
           taskMinute >= parseInt(minute) - 5
         );
       });
+
+      if(filtered3.length > 0 && Oldfiltered3 != filtered3.length){
+        setShowReminder(true);
+        Oldfiltered3 = filtered3.length;
+      }
 
       setFilteredRemindFish(filtered3);
     };

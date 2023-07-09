@@ -33,6 +33,7 @@ const TaskManager = () => {
         time: selectedTime,
         date: selectedDate,
         description: description,
+        remind: 0,
       };
       setTasks([...tasks, newTask]);
       setInputValue('');
