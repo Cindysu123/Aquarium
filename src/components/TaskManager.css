@@ -151,3 +151,8 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 98;
 }
+
+.calendar-text{
+  width: 24%;
+  color: #757575;
+}

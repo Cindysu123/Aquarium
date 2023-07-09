@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FishTank from './FishTank';
 import CenterFishTank from './CenterFishTank';
 import './TaskManager.css';
@@ -141,6 +141,7 @@ const TaskManager = () => {
                 value={`${selectedDateRange.startDate?.toDateString() || ''} - ${selectedDateRange.endDate?.toDateString() || ''}`}
                 onClick={handleCalendarToggle}
                 readOnly
+                className='text-input calendar-text'
               />
               {isCalendarOpen && (
                 <div style={{ position: 'absolute', zIndex: 9999 }}>

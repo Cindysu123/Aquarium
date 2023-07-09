@@ -13,13 +13,15 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
 
   const getRandomColor = () => {
     let randomColor = `#473b78`;
-    if (0 < selectedTime && selectedTime < 10) {
+    var timeParts = selectedTime.split(":");
+    var hours = parseInt(timeParts[0]);
+    if (0 < hours && hours < 10) {
       randomColor = `#DFF6FD`;
-    } else if (10 <= selectedTime && selectedTime < 14) {
+    } else if (10 <= hours && hours < 14) {
       randomColor = `#CBE5FF`;
-    } else if (14 <= selectedTime && selectedTime < 17) {
+    } else if (14 <= hours && hours < 17) {
       randomColor = `#B8C9E8`;
-    } else if (17 <= selectedTime && selectedTime < 20) {
+    } else if (17 <= hours && hours < 20) {
       randomColor = `#959CC1`;
     } else {
       randomColor = `#C1BADD`;
@@ -75,7 +77,7 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
   const imageIndex = (name.length + selectedTime.toString().length + description.length) % 5;
   const selectedImage = fishImages[imageIndex];
 
-  const num = "type" + ((imageIndex+description.length+name.length)%6).toString();
+  const num = "type" + ((imageIndex+description.length+name.length)%5).toString();
 
   return (
     <div

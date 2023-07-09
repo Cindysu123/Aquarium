@@ -214,10 +214,10 @@ const CenterFishTank = ({ tasks }) => {
     const date = new Date();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const totalMinutes = hours * 60 + minutes;
-    const timelineStart = 56;
+    const totalHourse = hours + minutes/60;
+    const timelineStart = 58.5;
   
-    const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 198;
+    const currentPosition = timelineStart + (10.8)*(totalHourse-7);
     return `${currentPosition}vh`;
   };
 
@@ -225,10 +225,10 @@ const CenterFishTank = ({ tasks }) => {
     const date = new Date();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const totalMinutes = hours * 60 + minutes;
-    const timelineStart = 56;
+    const totalHourse = hours + minutes/60;
+    const timelineStart = 58.5;
   
-    const currentPosition = timelineStart + ((totalMinutes-480) / 1020) * 198 - 2;
+    const currentPosition = timelineStart + (10.8)*(totalHourse-7) - 2;
     return `${currentPosition}vh`;
   }
 
