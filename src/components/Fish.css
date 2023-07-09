@@ -10,6 +10,11 @@
   cursor: pointer;
 }
 
+.fish:active {
+  transform: translateX(30%);
+  transform: translateY(30%);
+}
+
 .fish-center:hover{
   animation-play-state: paused; /* Pause the animation on hover */
 }
@@ -25,31 +30,65 @@
 .fish-center {
   animation-fill-mode: both;
   animation-name: swimAnimation;
-  animation-duration: 8s;
+  animation-duration: 12s;
   animation-iteration-count: infinite;
 }
 
-.fish-expand {
-  animation: swim 20s linear infinite;
+.fish-expand .type1 {
+  animation: swim 22s linear infinite;
+}
+.fish-expand .type2 {
+  animation: swim-variation1 40s linear infinite;
+}
+.fish-expand .type3 {
+  animation: swim-variation2 30s linear infinite;
+}
+.fish-expand .type4 {
+  animation: swim-variation3 25s linear infinite;
+}
+.fish-expand .type5 {
+  animation: swim-variation4 28s linear infinite;
+}
+.fish-expand .type6 {
+  animation: swim-variation6 35s linear infinite;
 }
 
 @keyframes swimAnimation {
   0% {
-    transform: translateX(0%) scaleX(1);
+    transform: translateX(0%);
   }
   45% {
-    transform: translateX(100%) scaleX(1);
+    transform: translateX(160%);
   }
   50% {
-    transform: translateX(100%) scaleX(-1);
+    transform: translateX(160%);
   }
   95% {
-    transform: translateX(0%) scaleX(-1);
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(0%) scaleX(1);
+    transform: translateX(0%);
   }
 }
+
+@keyframes flipImage {
+  0% {
+    transform: scaleX(1);
+  }
+  47% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+  97% {
+    transform: scaleX(-1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 
 @keyframes swim {
   0% {
@@ -59,10 +98,10 @@
     transform: translateX(-10vw) translateY(12vh) scaleX(1);
   }
   45% {
-    transform: translateX(32vw) translateY(10vh) scaleX(1);
+    transform: translateX(20vw) translateY(10vh) scaleX(1);
   }
   50% {
-    transform: translateX(32vw) translateY(10vh) scaleX(-1);
+    transform: translateX(20vw) translateY(10vh) scaleX(-1);
   }
   75% {
     transform: translateX(-10vw) translateY(3vh) scaleX(-1);
@@ -75,6 +114,32 @@
   }
 }
 
+@keyframes swim2 {
+  0% {
+    transform: translateX(-50vw) translateY(20vh) scaleX(1);
+  }
+  25% {
+    transform: translateX(-10vw) translateY(22vh) scaleX(1);
+  }
+  45% {
+    transform: translateX(20vw) translateY(20vh) scaleX(1);
+  }
+  50% {
+    transform: translateX(20vw) translateY(20vh) scaleX(-1);
+  }
+  75% {
+    transform: translateX(-10vw) translateY(13vh) scaleX(-1);
+  }
+  96% {
+    transform: translateX(-48vw) translateY(18vh) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-50vw) translateY(20vh) scaleX(1);
+  }
+}
+
+
+
 .fish-text_name,
 .fish-text_time,
 .fish-text_date,
@@ -84,6 +149,13 @@
 
 .fish-image1 {
   width: 20%;
+}
+
+.fish-center .fish-image1{
+  animation-fill-mode: both;
+  animation-name: flipImage;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
 }
 
 .fish-text_description {
@@ -99,4 +171,167 @@
 .fish:hover > .Onlyhover {
   display: block;
   opacity: 1; /* change opacity to 1 on hover */
+}
+
+.fish-expand .fish-text_name{
+  display: none !important;
+}
+
+.fish-expand .fish-text_date{
+  display: none !important;
+}
+
+.fish-expand .fish-text_description{
+  display: none !important;
+}
+
+
+
+
+@keyframes swim-variation1 {
+  0% {
+    transform: translateX(-40vw) translateY(20vh) scaleX(1);
+  }
+  25% {
+    transform: translateX(0vw) translateY(22vh) scaleX(1);
+  }
+  45% {
+    transform: translateX(30vw) translateY(20vh) scaleX(1);
+  }
+  50% {
+    transform: translateX(30vw) translateY(20vh) scaleX(-1);
+  }
+  75% {
+    transform: translateX(0vw) translateY(13vh) scaleX(-1);
+  }
+  96% {
+    transform: translateX(-38vw) translateY(18vh) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-40vw) translateY(20vh) scaleX(1);
+  }
+}
+
+@keyframes swim-variation2 {
+  0% {
+    transform: translateX(-60vw) translateY(0vh) scaleX(1);
+  }
+  25% {
+    transform: translateX(-20vw) translateY(2vh) scaleX(1);
+  }
+  45% {
+    transform: translateX(10vw) translateY(0vh) scaleX(1);
+  }
+  50% {
+    transform: translateX(10vw) translateY(0vh) scaleX(-1);
+  }
+  75% {
+    transform: translateX(-20vw) translateY(-7vh) scaleX(-1);
+  }
+  96% {
+    transform: translateX(-58vw) translateY(-2vh) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-60vw) translateY(0vh) scaleX(1);
+  }
+}
+
+
+@keyframes swim-variation3 {
+  0% {
+    transform: translateX(-40vw) translateY(30vh) scaleX(1);
+  }
+  25% {
+    transform: translateX(0vw) translateY(32vh) scaleX(1);
+  }
+  45% {
+    transform: translateX(30vw) translateY(30vh) scaleX(1);
+  }
+  50% {
+    transform: translateX(30vw) translateY(30vh) scaleX(-1);
+  }
+  75% {
+    transform: translateX(0vw) translateY(23vh) scaleX(-1);
+  }
+  96% {
+    transform: translateX(-38vw) translateY(28vh) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-40vw) translateY(30vh) scaleX(1);
+  }
+}
+
+
+@keyframes swim-variation3 {
+  0% {
+    transform: translateX(-40vw) translateY(30vh) scaleX(1);
+  }
+  25% {
+    transform: translateX(0vw) translateY(32vh) scaleX(1);
+  }
+  45% {
+    transform: translateX(30vw) translateY(30vh) scaleX(1);
+  }
+  50% {
+    transform: translateX(30vw) translateY(30vh) scaleX(-1);
+  }
+  75% {
+    transform: translateX(0vw) translateY(23vh) scaleX(-1);
+  }
+  96% {
+    transform: translateX(-38vw) translateY(28vh) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-40vw) translateY(30vh) scaleX(1);
+  }
+}
+
+
+@keyframes swim-variation4 {
+  0% {
+    transform: translateX(-60vw) translateY(20vh) scaleX(1);
+  }
+  25% {
+    transform: translateX(-20vw) translateY(22vh) scaleX(1);
+  }
+  45% {
+    transform: translateX(10vw) translateY(20vh) scaleX(1);
+  }
+  50% {
+    transform: translateX(10vw) translateY(20vh) scaleX(-1);
+  }
+  75% {
+    transform: translateX(-20vw) translateY(13vh) scaleX(-1);
+  }
+  96% {
+    transform: translateX(-58vw) translateY(18vh) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-60vw) translateY(20vh) scaleX(1);
+  }
+}
+
+
+@keyframes swim-variation5 {
+  0% {
+    transform: translateX(-40vw) translateY(40vh) scaleX(1);
+  }
+  25% {
+    transform: translateX(0vw) translateY(42vh) scaleX(1);
+  }
+  45% {
+    transform: translateX(30vw) translateY(40vh) scaleX(1);
+  }
+  50% {
+    transform: translateX(30vw) translateY(40vh) scaleX(-1);
+  }
+  75% {
+    transform: translateX(0vw) translateY(33vh) scaleX(-1);
+  }
+  96% {
+    transform: translateX(-38vw) translateY(38vh) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-40vw) translateY(40vh) scaleX(1);
+  }
 }

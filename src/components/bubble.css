@@ -60,6 +60,7 @@
     animation: moveUp6e 18s ease-in-out infinite;
     width: 3vw;
     filter: blur(2px);
+    z-index: 99;
 }
 
 

@@ -43,7 +43,7 @@
   .music-b{
     position: absolute;
     top: 5vh;
-    left: 5vw;
+    left: 10vw;
     z-index: 9992;
     background: transparent;
     border: none;

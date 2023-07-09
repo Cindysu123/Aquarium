@@ -41,7 +41,7 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
   };
 
   return (
-    <div className={`fish-tank ${expanded ? 'expanded' : 'collapsed'}`}>
+    <div className={`fish-tank`}>
       <div className="button-container">
         <button onClick={toggleExpansion} className={`expand-b ${expanded ? 'expanded' : 'collapsed'}`}>
           {expanded ? '-' : '+'}

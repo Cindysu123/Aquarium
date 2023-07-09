@@ -75,6 +75,8 @@ const Fish = ({ name, source, selectedTime, description, date }) => {
   const imageIndex = (name.length + selectedTime.toString().length + description.length) % 5;
   const selectedImage = fishImages[imageIndex];
 
+  const num = "type" + ((imageIndex+description.length+name.length)%6).toString();
+
   return (
     <div
       className={`fish ${source === 'CenterFishTank' ? 'fish-center' : ''} ${
@@ -89,7 +91,7 @@ const Fish = ({ name, source, selectedTime, description, date }) => {
         {date}
       </p>
       <p className={`fish-text_description ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>{description}</p>
-      <img src={selectedImage} alt="Fish" className="fish-image1" />
+      <img src={selectedImage} alt="Fish" className={`fish-image1 ${num}`} />
     </div>
   );
 };
