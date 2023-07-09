@@ -1,8 +1,16 @@
-.fish-tank {
-    /* border: 1px solid #ccc; */
+  .fish-tank {
     padding: 2vh;
     margin-bottom: 2vh;
     width: 40vh;
+    transition: height 0.3s ease;
+  }
+
+  .expanded {
+    height: auto;
+  }
+
+  .collapsed {
+    height: 5vh;
   }
   
   .fish-tank-title {
@@ -27,6 +35,15 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .expand-b.expanded {
+    transform: rotate(0deg);
+  }
+  
+  .expand-b.collapsed {
+    transform: rotate(45deg);
   }
   
   .bold {
@@ -72,6 +89,16 @@
     padding: 1vh;
     background-color: #dff6fd;
     border-radius: 10px;
+    transition: opacity 0.3s ease;
+  }
+
+  .task.expanded {
+    opacity: 1;
+  }
+  
+  .task.collapsed {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .tank-select {

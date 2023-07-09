@@ -2,29 +2,29 @@
     position: absolute;
 }
 
-.one{
+.centered .one{
     animation: moveUp 14s ease-in-out infinite;
     width: 4vw;
 }
-.two{
+.centered .two{
     animation: moveUp2 12s ease-in-out infinite;
     width: 3vw;
 }
-.three{
+.centered .three{
     animation: moveUp3 8s ease-in-out infinite;
     width: 3vw;
 }
-.four{
+.centered .four{
     animation: moveUp4 14s ease-in-out infinite;
     width: 2vw;
 }
-.five{
+.centered .five{
     animation: moveUp5 16s ease-in-out infinite;
     width: 4vw;
     filter: blur(2px);
     
 }
-.six{
+.centered .six{
     animation: moveUp6 18s ease-in-out infinite;
     width: 3vw;
     filter: blur(2px);
@@ -35,29 +35,29 @@
 
 
 .moveUp .one{
-    animation: moveUpe 14s ease-in-out infinite !important;
+    animation: moveUpe 14s ease-in-out infinite;
     width: 4vw;
 }
 .moveUp .two{
-    animation: moveUp2e 12s ease-in-out infinite!important;
+    animation: moveUp2e 12s ease-in-out infinite;
     width: 3vw;
 }
 .moveUp .three{
-    animation: moveUp3e 8s ease-in-out infinite!important;
+    animation: moveUp3e 8s ease-in-out infinite;
     width: 3vw;
 }
 .moveUp .four{
-    animation: moveUp4e 14s ease-in-out infinite!important;
+    animation: moveUp4e 14s ease-in-out infinite;
     width: 2vw;
 }
 .moveUp .five{
-    animation: moveUp5e 16s ease-in-out infinite!important;
+    animation: moveUp5e 16s ease-in-out infinite;
     width: 4vw;
     filter: blur(2px);
     
 }
 .moveUp .six{
-    animation: moveUp6e 18s ease-in-out infinite!important;
+    animation: moveUp6e 18s ease-in-out infinite;
     width: 3vw;
     filter: blur(2px);
 }

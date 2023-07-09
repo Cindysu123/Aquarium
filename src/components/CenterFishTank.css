@@ -288,7 +288,17 @@ input[type="range"]::-ms-fill-upper {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
+
+.ex-b.expanded {
+  transform: rotate(0deg);
+}
+
+.ex-b.collapsed {
+  transform: rotate(45deg);
+}
+
 .Today-t{
   position: absolute;
   top: 1.5vh;

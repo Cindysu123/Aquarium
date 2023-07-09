@@ -41,17 +41,16 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
   };
 
   return (
-    <div className="fish-tank">
+    <div className={`fish-tank ${expanded ? 'expanded' : 'collapsed'}`}>
       <div className="button-container">
-        <button onClick={toggleExpansion} className="expand-b">
+        <button onClick={toggleExpansion} className={`expand-b ${expanded ? 'expanded' : 'collapsed'}`}>
           {expanded ? '-' : '+'}
         </button>
         <span className={`tank-name`}>{tankName}</span>
         <div className='Task-count' style={{ backgroundColor: getColor() }}>{tasks.length}</div>
       </div>
-      {expanded &&
-      tasks.map((task) => (
-        <div key={task.id} className="task">
+      {tasks.map((task) => (
+        <div key={task.id} className={`task ${expanded ? 'expanded' : 'collapsed'}`}>
           <Fish
             name={task.name}
             source="FishTank"

@@ -252,12 +252,12 @@ const CenterFishTank = ({ tasks }) => {
         </div>
       )}
       <div className='today-task'>
-      <div className="task-header">
-        <button onClick={toggleExpand} className='ex-b'>
-          {isExpanded ? '-' : '+'}
-        </button>
-        <span className='Today-t'>Today's Task</span>
-      </div>
+        <div className="task-header">
+          <button onClick={toggleExpand} className={`ex-b ${isExpanded ? 'expanded' : 'collapsed'}`}>
+            {isExpanded ? '-' : '+'}
+          </button>
+          <span className='Today-t'>Today's Task</span>
+        </div>
         {isExpanded && filteredTodayFish.map((task) => (
           <div key={task.id} className="task-today">
             <div className="task-info">

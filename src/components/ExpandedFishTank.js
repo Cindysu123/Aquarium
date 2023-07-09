@@ -84,7 +84,7 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
       <button onClick={toggleMusic} className="music-b">
         <img src={isMusicPlaying ? On : Off} alt="Music Icon" />
       </button>
-      <Bubble source='expanded'/>
+      <Bubble source='Expanded'/>
     </div>
   );
 };
