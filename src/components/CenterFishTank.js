@@ -44,24 +44,31 @@ const CenterFishTank = ({ tasks }) => {
   };
 
   const handleDateChange = (event) => {
+    console.log(event.target.value);
     setSelectedDate(event.target.value);
   };
 
   useEffect(() => {
-    const filtered = tasks.filter((task) =>
-      task.date === selectedDate || selectedDate === ''
-    );
-    setFilteredFish(filtered);
+    const filteredTasks = tasks.filter((task) => {
+      if (!task.dateRange.startDate || !task.dateRange.endDate) {
+        return false;
+      }
+      const startDate = new Date(task.dateRange.startDate);
+      const endDate = new Date(task.dateRange.endDate);
+      const selected = new Date(selectedDate.replace(/-/g, "/")); // Convert selectedDate format to match
+      return selected >= startDate && selected <= endDate;
+    });
+    setFilteredFish(filteredTasks);
   }, [tasks, selectedDate]);
 
   useEffect(() => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day}`;
-    const filtered2 = tasks.filter((task) => task.date === formattedDate);
-    setFilteredTodayFish(filtered2);
+    const today = new Date();
+    const filteredTasks = tasks.filter((task) => {
+      const startDate = new Date(task.dateRange.startDate);
+      const endDate = new Date(task.dateRange.endDate);
+      return startDate <= today && endDate >= today;
+    });
+    setFilteredTodayFish(filteredTasks);
   }, [tasks]);
 
   let Oldfiltered3 = 0;
@@ -71,15 +78,13 @@ const CenterFishTank = ({ tasks }) => {
       const hour = date.getHours().toString().padStart(2, '0');
       const minute = date.getMinutes().toString().padStart(2, '0');
 
-      const year = date.getFullYear();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const formattedDate = `${year}-${month}-${day}`;
-
       const filtered3 = tasks.filter((task) => {
+        const startDate = new Date(task.dateRange.startDate);
+        const endDate = new Date(task.dateRange.endDate);
         const [taskHour, taskMinute] = task.time.split(':').map((timePart) => parseInt(timePart));
         return (
-          task.date === formattedDate &&
+          startDate <= date && 
+          endDate >= date &&
           task.remind === 0 &&
           taskHour === parseInt(hour) &&
           taskMinute <= parseInt(minute) + 5 &&
@@ -89,11 +94,8 @@ const CenterFishTank = ({ tasks }) => {
 
       if(filtered3.length > 0 && Oldfiltered3 !== filtered3.length){
         setShowReminder(true);
-        console.log(Oldfiltered3)
-        console.log(filtered3.length)
         Oldfiltered3 = filtered3.length;
       }
-      console.log(Oldfiltered3)
       setFilteredRemindFish(filtered3);
     };
 
@@ -252,12 +254,12 @@ const CenterFishTank = ({ tasks }) => {
         </div>
       )}
       <div className='today-task'>
-        <div className="task-header">
-          <button onClick={toggleExpand} className={`ex-b ${isExpanded ? 'expanded' : 'collapsed'}`}>
-            {isExpanded ? '-' : '+'}
-          </button>
-          <span className='Today-t'>Today's Task</span>
-        </div>
+      <div className="task-header">
+        <button onClick={toggleExpand} className={`ex-b ${isExpanded ? 'expanded' : 'collapsed'}`}>
+          {isExpanded ? '-' : '+'}
+        </button>
+        <span className='Today-t'>Today's Task</span>
+      </div>
         {isExpanded && filteredTodayFish.map((task) => (
           <div key={task.id} className="task-today">
             <div className="task-info">
@@ -275,7 +277,7 @@ const CenterFishTank = ({ tasks }) => {
               <div key={task.id} className="task-close">
                 <div className="task-info-close">
                   Time to work on
-                  <span className="task-name-close">{task.name} at </span>
+                  <span className="task-name-close"> {task.name} at </span>
                   <span className="task-time-close">{task.time}</span>
                   <div className="task-description-close">Description: {task.description}</div>
                 </div>
@@ -324,7 +326,8 @@ const CenterFishTank = ({ tasks }) => {
                   source="SearchResults"
                   selectedTime={fish.time}
                   description={fish.description}
-                  date = {fish.date}
+                  startDate = {fish.dateRange.startDate}
+                  endDate = {fish.dateRange.endDate}
                 />
               </div>
             ))}
@@ -347,7 +350,8 @@ const CenterFishTank = ({ tasks }) => {
                   source="CenterFishTank"
                   selectedTime={task.time}
                   description={task.description}
-                  date = {task.date}
+                  startDate={task.dateRange.startDate}
+                  endDate={task.dateRange.endDate}
                 />
               </div>
             ))}

@@ -10,17 +10,17 @@
   cursor: pointer;
 }
 
-.fish:active {
-  transform: translateX(30%);
-  transform: translateY(30%);
+.fish-center:hover{
+  animation-play-state: paused; /* Pause the animation on hover */
 }
 
-.fish-center:hover{
+.fish-center:hover .fish-image1{
   animation-play-state: paused; /* Pause the animation on hover */
 }
 
 .fish-text_name {
   font-size: 3vh;
+  color: #272656;
 }
 
 .fish-text_description {
@@ -165,12 +165,11 @@
 
 .Onlyhover {
   display: none;
-  transition: opacity 1s ease; /* smooth transition for opacity */
+  z-index: 999;
 }
 
 .fish:hover > .Onlyhover {
   display: block;
-  opacity: 1; /* change opacity to 1 on hover */
 }
 
 .fish-expand .fish-text_name{
@@ -334,4 +333,9 @@
   100% {
     transform: translateX(-40vw) translateY(40vh) scaleX(1);
   }
+}
+
+.speech-Bubble{
+  width: 50%;
+  transform: translate(-110%, -20%);
 }

@@ -5,11 +5,11 @@ import img2 from '../img/fish/fish_2.gif';
 import img3 from '../img/fish/fish_3.gif';
 import img4 from '../img/fish/fish_4.gif';
 import img5 from '../img/fish/fish_5.gif';
+import bubble from '../img/speech-bubble.png'
 
-const Fish = ({ name, source, selectedTime, description, date }) => {
+const Fish = ({ name, source, selectedTime, description, startDate, endDate }) => {
   // Array of fish images
   const fishImages = [img1, img2, img3, img4, img5];
-  const [totalMinutes, settotalMinutes] = useState(0);
 
   const getRandomColor = () => {
     let randomColor = `#473b78`;
@@ -82,15 +82,14 @@ const Fish = ({ name, source, selectedTime, description, date }) => {
       className={`fish ${source === 'CenterFishTank' ? 'fish-center' : ''} ${
         source === 'ExpandedFishTank' ? 'fish-expand' : ''
       }`}
-      style={fishStyle}
-    >
-      <h4 className="fish-text_name">
-        {name}--{selectedTime}
-      </h4>
-      <p className={`fish-text_date ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>
-        {date}
-      </p>
-      <p className={`fish-text_description ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>{description}</p>
+      style={fishStyle}> 
+        <h4 className="fish-text_name">
+          {name}--{selectedTime}
+        </h4>
+        <p className={`fish-text_date ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>
+          {startDate}--{endDate}
+        </p>
+        <p className={`fish-text_description ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>{description}</p>
       <img src={selectedImage} alt="Fish" className={`fish-image1 ${num}`} />
     </div>
   );

@@ -225,7 +225,7 @@ input[type="range"]::-ms-fill-upper {
   position: absolute;
   top: 16vh;
   left: 6vw;
-  width: 16vw;
+  width: 17.3vw;
   font-size: 2.5vh;
   padding: 0.5vh;
 }
@@ -263,7 +263,7 @@ input[type="range"]::-ms-fill-upper {
   background-color: #f3f5f9;
   top: 24vh;
   left: 6vw;
-  width: 32vh;
+  width: 37vh;
   border-radius: 5px;
   font-weight: bold;
   color: #51516f;
@@ -339,7 +339,7 @@ input[type="range"]::-ms-fill-upper {
   right: 10vw;
   top: 60vh;
   width: 20vw;
-  background-color: #b8f0ff;
+  background-color: #ffffffcb;
 }
 
 .Note-b{

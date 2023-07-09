@@ -2,15 +2,37 @@ import React, { useState, useEffect } from 'react';
 import FishTank from './FishTank';
 import CenterFishTank from './CenterFishTank';
 import './TaskManager.css';
+import { DateRangePicker } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // Import the styles
+import 'react-date-range/dist/theme/default.css'; // Import the theme
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [selectedTank, setSelectedTank] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDateRange, setSelectedDateRange] = useState({
+    startDate: new Date(),
+    endDate: null,
+  });
   const [description, setDescription] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+
+  const handleDateRangeChange = (ranges) => {
+    if (ranges.selection) {
+      setSelectedDateRange({
+        startDate: ranges.selection.startDate,
+        endDate: ranges.selection.endDate,
+      });
+      console.log(selectedDateRange.startDate)
+      console.log(selectedDateRange.endDate)
+    }
+  };
+
+  const handleCalendarToggle = () => {
+    setIsCalendarOpen(!isCalendarOpen);
+  };
 
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -22,20 +44,28 @@ const TaskManager = () => {
   }, [tasks]);
 
   const handleAddTask = () => {
-    if (inputValue.trim() && selectedTank && selectedTime && selectedDate) {
+    if (inputValue.trim() && 
+        selectedTank && 
+        selectedTime && 
+        selectedDateRange.startDate &&
+        selectedDateRange.endDate
+    ) {
       const newTask = {
         id: tasks.length + 1,
         name: inputValue,
         tank: selectedTank,
         time: selectedTime,
-        date: selectedDate,
+        dateRange: {
+          startDate: selectedDateRange.startDate.toDateString(),
+          endDate: selectedDateRange.endDate.toDateString(),
+        },
         description: description,
         remind: 0,
       };
       setTasks([...tasks, newTask]);
       setInputValue('');
       setDescription('');
-      setSelectedDate('');
+      setSelectedDateRange({ startDate: new Date(), endDate: null});
       setErrorMessage('');
     } else {
       setErrorMessage('Please select task type, date, and time.');
@@ -62,10 +92,6 @@ const TaskManager = () => {
 
   const handleTimeChange = (event) => {
     setSelectedTime(event.target.value);
-  };
-
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
   };
 
   const handleKeyDown = (event) => {
@@ -111,11 +137,23 @@ const TaskManager = () => {
                 className='Select time'
               />
               <input
-                type="date"
-                value={selectedDate}
-                onChange={handleDateChange}
-                className='Select date'
+                type="text"
+                value={`${selectedDateRange.startDate?.toDateString() || ''} - ${selectedDateRange.endDate?.toDateString() || ''}`}
+                onClick={handleCalendarToggle}
+                readOnly
               />
+              {isCalendarOpen && (
+                <div style={{ position: 'absolute', zIndex: 9999 }}>
+                  <DateRangePicker
+                    ranges={[{
+                      startDate: selectedDateRange.startDate,
+                      endDate: selectedDateRange.endDate,
+                      key: 'selection',
+                    }]}
+                    onChange={handleDateRangeChange}
+                  />
+                </div>
+              )}
               <button onClick={handleAddTask} className='Add-Task'>Add Task</button>
               {errorMessage && (
                 <div className="error-message">*{errorMessage}</div>

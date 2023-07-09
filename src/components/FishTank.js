@@ -13,14 +13,12 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
 
   const handleTankChange = (taskId, event) => {
     const newSelectedTank = event.target.value;
-    // Find the task in the tasks array and update the tank property
     const updatedTasks = tasks.map((task) => {
       if (task.id === taskId) {
         return { ...task, tank: newSelectedTank };
       }
       return task;
     });
-    // Update the tasks array with the updated task
     setTasks(updatedTasks);
   };
 
@@ -56,7 +54,8 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
             source="FishTank"
             selectedTime={task.time}
             description={task.description}
-            date={task.date}
+            startDate={task.dateRange.startDate}
+            endDate={task.dateRange.endDate}
           />
           <select
             value={selectedTank}
