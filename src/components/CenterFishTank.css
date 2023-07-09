@@ -218,6 +218,7 @@ input[type="range"]::-ms-fill-upper {
 
 .top-left {
   top: 6vh;
+  z-index: 9999;
   left: 10vw;
 }
 
@@ -339,7 +340,7 @@ input[type="range"]::-ms-fill-upper {
   right: 10vw;
   top: 60vh;
   width: 20vw;
-  background-color: #ffffffcb;
+  background-color: #ffffff;
 }
 
 .Note-b{

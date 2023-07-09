@@ -7,11 +7,13 @@ import underwaterSound from '../Sound/underwater.mp3';
 import On from '../img/fish/Volume Up.png';
 import Off from '../img/fish/Volume Off.png';
 import Plants from './plants';
-import Bubble from './bubble'
+import Bubble from './bubble';
 
 const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
   const audio = new Audio(underwaterSound);
 
   useEffect(() => {
@@ -32,6 +34,16 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
     };
   }, [isMusicPlaying]);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
   const toggleMusic = () => {
     setIsMusicPlaying(!isMusicPlaying);
   };
@@ -47,7 +59,8 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
   };
 
   const waterOffset = calculateMovementOffset(10);
-  const floorOffset = 0;
+  const floorOffset = calculateMovementOffset(3);
+  const fontOffset = calculateMovementOffset(2);
 
   return (
     <div className="expanded-fish-tank" onMouseMove={handleMouseMove}>
@@ -80,11 +93,22 @@ const ExpandedFishTank = ({ tasks, waterHue, floorHue }) => {
           transform: `translateX(${floorOffset}px)`,
         }}
       />
-      <Plants source = 'expanded'/>
+      <Plants source="expanded" />
       <button onClick={toggleMusic} className="music-b">
         <img src={isMusicPlaying ? On : Off} alt="Music Icon" />
       </button>
-      <Bubble source='Expanded'/>
+      <Bubble source="Expanded" />
+      <div className="datetime" style={{ transform: `translateX(${fontOffset}px)` }}>
+        <div className="time">
+          {currentDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }).split(':').map((segment, index) => (
+            <span key={index}>
+              {segment}
+              {index === 0 && <span className="tickle">:</span>}
+            </span>
+          ))}
+        </div>
+        <div className="date">{currentDateTime.toLocaleDateString()}</div>
+      </div>
     </div>
   );
 };

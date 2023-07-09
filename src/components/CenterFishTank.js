@@ -62,10 +62,11 @@ const CenterFishTank = ({ tasks }) => {
   }, [tasks, selectedDate]);
 
   useEffect(() => {
-    const today = new Date();
+    const options = { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' };
+    const today = new Date().toLocaleDateString('en-US', options);
     const filteredTasks = tasks.filter((task) => {
-      const startDate = new Date(task.dateRange.startDate);
-      const endDate = new Date(task.dateRange.endDate);
+      const startDate = new Date(task.dateRange.startDate).toLocaleDateString('en-US', options);
+      const endDate = new Date(task.dateRange.endDate).toLocaleDateString('en-US', options);
       return startDate <= today && endDate >= today;
     });
     setFilteredTodayFish(filteredTasks);
@@ -79,13 +80,16 @@ const CenterFishTank = ({ tasks }) => {
       const minute = date.getMinutes().toString().padStart(2, '0');
 
       const filtered3 = tasks.filter((task) => {
-        const startDate = new Date(task.dateRange.startDate);
-        const endDate = new Date(task.dateRange.endDate);
+        const options = { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' };
+        const today = new Date().toLocaleDateString('en-US', options);
+        const startDate = new Date(task.dateRange.startDate).toLocaleDateString('en-US', options);
+        const endDate = new Date(task.dateRange.endDate).toLocaleDateString('en-US', options);
         const [taskHour, taskMinute] = task.time.split(':').map((timePart) => parseInt(timePart));
         return (
-          startDate <= date && 
-          endDate >= date &&
+          startDate <= today && 
+          endDate >= today &&
           task.remind === 0 &&
+          task.source !== "Completed" &&
           taskHour === parseInt(hour) &&
           taskMinute <= parseInt(minute) + 5 &&
           taskMinute >= parseInt(minute) - 5
@@ -101,7 +105,7 @@ const CenterFishTank = ({ tasks }) => {
 
     updateFilteredRemindFish();
 
-    const interval = setInterval(updateFilteredRemindFish, 1000);
+    const interval = setInterval(updateFilteredRemindFish, 60000);
 
     return () => clearInterval(interval);
   }, [tasks]);
@@ -123,17 +127,55 @@ const CenterFishTank = ({ tasks }) => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener to the 'keydown' event
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      // Remove event listener when component unmounts
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []); // Empty dependency array to run the effect only once
+
   const toggleExpansion = () => {
     setExpanded(!expanded);
-    if (expanded) {
-      document.documentElement.style.overflow = 'auto';
-    } else {
-      document.documentElement.style.overflow = 'hidden';
-    }
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // Optionally, you can add smooth scrolling behavior
     });
+    if (expanded && document.fullscreenElement) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      document.documentElement.style.overflow = 'auto'; // Enable scroll bar
+    } else if (!expanded) {
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+      document.documentElement.style.overflow = 'hidden'; // Disable scroll bar
+    }else{
+      document.documentElement.style.overflow = 'auto'; // Enable scroll bar
+    }
   };
 
   const renderTimeScale = () => {
@@ -301,7 +343,7 @@ const CenterFishTank = ({ tasks }) => {
         </div>
       </div>
       <button onClick={toggleExpansion} className={`Expand-b ${expanded ? 'top-left' : 'normal'}`}>
-        {expanded ? 'Collapse' : 'Expand'}
+        {expanded ? 'Collapse' : 'Full Screen'}
       </button>
       <div className='search-container'>
         <input
