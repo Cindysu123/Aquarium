@@ -7,6 +7,7 @@ import f1 from '../img/fish/f1.png';
 import fishTank from '../img/fish/background_5c.png';
 import settingImg from '../img/fish/Setting.png';
 import NoteIon from '../img/Note.png'
+import Bubble from './bubble'
 
 import Plants from './plants';
 
@@ -276,7 +277,7 @@ const CenterFishTank = ({ tasks }) => {
                   Time to work on
                   <span className="task-name-close">{task.name} at </span>
                   <span className="task-time-close">{task.time}</span>
-                  <div className="task-description-close">{task.description}</div>
+                  <div className="task-description-close">Description: {task.description}</div>
                 </div>
               </div>
             ))}
@@ -363,8 +364,8 @@ const CenterFishTank = ({ tasks }) => {
               filter: `hue-rotate(${floorHue}deg)`,
             }}
           />
-          <Plants
-            source = 'center'/>
+          <Plants source = 'center'/>
+          <Bubble source = 'center'/>
         </div>
       )}
       <img src={settingImg} alt="Settings" className="setting-image" onClick={toggleSettings2} style={{ transform: `rotate(${rotation}deg)` }} />

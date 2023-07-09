@@ -1,0 +1,432 @@
+.bubble{
+    position: absolute;
+}
+
+.one{
+    animation: moveUp 14s ease-in-out infinite;
+    width: 4vw;
+}
+.two{
+    animation: moveUp2 12s ease-in-out infinite;
+    width: 3vw;
+}
+.three{
+    animation: moveUp3 8s ease-in-out infinite;
+    width: 3vw;
+}
+.four{
+    animation: moveUp4 14s ease-in-out infinite;
+    width: 2vw;
+}
+.five{
+    animation: moveUp5 16s ease-in-out infinite;
+    width: 4vw;
+    filter: blur(2px);
+    
+}
+.six{
+    animation: moveUp6 18s ease-in-out infinite;
+    width: 3vw;
+    filter: blur(2px);
+}
+
+
+
+
+
+.moveUp .one{
+    animation: moveUpe 14s ease-in-out infinite !important;
+    width: 4vw;
+}
+.moveUp .two{
+    animation: moveUp2e 12s ease-in-out infinite!important;
+    width: 3vw;
+}
+.moveUp .three{
+    animation: moveUp3e 8s ease-in-out infinite!important;
+    width: 3vw;
+}
+.moveUp .four{
+    animation: moveUp4e 14s ease-in-out infinite!important;
+    width: 2vw;
+}
+.moveUp .five{
+    animation: moveUp5e 16s ease-in-out infinite!important;
+    width: 4vw;
+    filter: blur(2px);
+    
+}
+.moveUp .six{
+    animation: moveUp6e 18s ease-in-out infinite!important;
+    width: 3vw;
+    filter: blur(2px);
+}
+
+
+
+
+@keyframes moveUp {
+    0% {
+      top: 200vh;
+      left: 40vw;
+    }
+    10% {
+      left: 45vw;
+    }
+    30% {
+      left: 38vw;
+    }
+    50% {
+      left: 45vw;
+    }
+    70% {
+      left: 35vw;
+    }
+    90% {
+      left: 42vw;
+    }
+    99.99% {
+      top: 74vh;
+      left: 40vw;
+    }
+    100% {
+      top: 200vh;
+      left: 40vw;
+    }
+  }
+
+  @keyframes moveUp2 {
+    0% {
+      top: 160vh;
+      left: 60vw;
+    }
+    18% {
+      left: 50vw;
+    }
+    38% {
+      left: 60vw;
+    }
+    58% {
+      left: 50vw;
+    }
+    78% {
+      left: 55vw;
+    }
+    98% {
+      left: 61vw;
+    }
+    99.99% {
+      top: 60vh;
+      left: 60vw;
+    }
+    100% {
+      top: 160vh;
+      left: 60vw;
+    }
+  }
+  
+  @keyframes moveUp3 {
+    0% {
+      top: 140vh;
+      left: 48vw;
+    }
+    18% {
+      left: 60vw;
+    }
+    38% {
+      left: 48vw;
+    }
+    58% {
+      left: 58vw;
+    }
+    75% {
+      left: 48vw;
+    }
+    95% {
+      left: 50vw;
+    }
+    99.99% {
+      top: 70vh;
+      left: 48vw;
+    }
+    100% {
+      top: 140vh;
+      left: 48vw;
+    }
+  }
+  
+  @keyframes moveUp4 {
+    0% {
+      top: 120vh;
+      left: 50vw;
+    }
+    12% {
+      left: 45vw;
+    }
+    35% {
+      left: 55vw;
+    }
+    52% {
+      left: 50vw;
+    }
+    68% {
+      left: 60vw;
+    }
+    95% {
+      left: 52vw;
+    }
+    99.99% {
+      top: 100vh;
+      left: 50vw;
+    }
+    100% {
+      top: 120vh;
+      left: 50vw;
+    }
+  }
+  
+  @keyframes moveUp5 {
+    0% {
+      top: 160vh;
+      left: 40vw;
+    }
+    15% {
+      left: 35vw;
+    }
+    37% {
+      left: 45vw;
+    }
+    55% {
+      left: 40vw;
+    }
+    77% {
+      left: 45vw;
+    }
+    95% {
+      left: 42vw;
+    }
+    99.99% {
+      top: 80vh;
+      left: 40vw;
+    }
+    100% {
+      top: 160vh;
+      left: 40vw;
+    }
+  }
+  
+  @keyframes moveUp6 {
+    0% {
+      top: 180vh;
+      left: 80vw;
+    }
+    12% {
+      left: 74vw;
+    }
+    34% {
+      left: 70vw;
+    }
+    55% {
+      left: 74vw;
+    }
+    74% {
+      left: 80vw;
+    }
+    97% {
+      left: 82vw;
+    }
+    99.99% {
+      top: 60vh;
+      left: 80vw;
+    }
+    100% {
+      top: 180vh;
+      left: 80vw;
+    }
+  }
+  
+
+
+
+
+
+  @keyframes moveUpe {
+    0% {
+      top: 150vh;
+      left: 40vw;
+    }
+    10% {
+      left: 45vw;
+    }
+    30% {
+      left: 38vw;
+    }
+    50% {
+      left: 45vw;
+    }
+    70% {
+      left: 35vw;
+    }
+    90% {
+      left: 42vw;
+    }
+    99.99% {
+      top: 24vh;
+      left: 40vw;
+    }
+    100% {
+      top: 150vh;
+      left: 40vw;
+    }
+  }
+
+  @keyframes moveUp2e {
+    0% {
+      top: 110vh;
+      left: 60vw;
+    }
+    18% {
+      left: 50vw;
+    }
+    38% {
+      left: 60vw;
+    }
+    58% {
+      left: 50vw;
+    }
+    78% {
+      left: 55vw;
+    }
+    98% {
+      left: 61vw;
+    }
+    99.99% {
+      top: 10vh;
+      left: 60vw;
+    }
+    100% {
+      top: 110vh;
+      left: 60vw;
+    }
+  }
+  
+  @keyframes moveUp3e {
+    0% {
+      top: 90vh;
+      left: 48vw;
+    }
+    18% {
+      left: 60vw;
+    }
+    38% {
+      left: 48vw;
+    }
+    58% {
+      left: 58vw;
+    }
+    75% {
+      left: 48vw;
+    }
+    95% {
+      left: 50vw;
+    }
+    99.99% {
+      top: 20vh;
+      left: 48vw;
+    }
+    100% {
+      top: 90vh;
+      left: 48vw;
+    }
+  }
+  
+  @keyframes moveUp4e {
+    0% {
+      top: 70vh;
+      left: 50vw;
+    }
+    12% {
+      left: 45vw;
+    }
+    35% {
+      left: 55vw;
+    }
+    52% {
+      left: 50vw;
+    }
+    68% {
+      left: 60vw;
+    }
+    95% {
+      left: 52vw;
+    }
+    99.99% {
+      top: 50vh;
+      left: 50vw;
+    }
+    100% {
+      top: 70vh;
+      left: 50vw;
+    }
+  }
+  
+  @keyframes moveUp5e {
+    0% {
+      top: 110vh;
+      left: 40vw;
+    }
+    15% {
+      left: 35vw;
+    }
+    37% {
+      left: 45vw;
+    }
+    55% {
+      left: 40vw;
+    }
+    77% {
+      left: 45vw;
+    }
+    95% {
+      left: 42vw;
+    }
+    99.99% {
+      top: 30vh;
+      left: 40vw;
+    }
+    100% {
+      top: 110vh;
+      left: 40vw;
+    }
+  }
+  
+  @keyframes moveUp6e {
+    0% {
+      top: 130vh;
+      left: 80vw;
+    }
+    12% {
+      left: 74vw;
+    }
+    34% {
+      left: 70vw;
+    }
+    55% {
+      left: 74vw;
+    }
+    74% {
+      left: 80vw;
+    }
+    97% {
+      left: 82vw;
+    }
+    99.99% {
+      top: 10vh;
+      left: 80vw;
+    }
+    100% {
+      top: 130vh;
+      left: 80vw;
+    }
+  }
+  
