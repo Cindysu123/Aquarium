@@ -29,19 +29,18 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
     return randomColor;
   };
 
-  const convertToMinutes = () => {
+  const convertToHourse = () => {
     var timeParts = selectedTime.split(":");
     var hours = parseInt(timeParts[0]);
     var minutes = parseInt(timeParts[1]);
   
-    var totalMinutes = (hours * 60) + minutes;
+    var totalHourse = hours + (minutes/60);
   
-    return totalMinutes;
+    return totalHourse;
   }
   
-  // const topPosition = `${50 + (convertToMinutes() - 7 * 60) / 5.8}vh`;
-  const topPosition = `${53 + (convertToMinutes() - (7 * 60)) / 5.6}vh`;
-  const topPosition2 = `${(convertToMinutes() - (7*60)) / 6 / 2 - 20}vh`;
+  const topPosition = `${58.5 + (convertToHourse() - 7) * 10.8 - 10}vh`;
+  const topPosition2 = `${(convertToHourse() - 7) / 10.8 / 2 - 20}vh`;
 
   if (!document.fishColors) {
     document.fishColors = {};
@@ -77,21 +76,23 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
   const imageIndex = (name.length + selectedTime.toString().length + description.length) % 5;
   const selectedImage = fishImages[imageIndex];
 
-  const num = "type" + ((imageIndex+description.length+name.length)%5).toString();
+  const num = "type" + ((selectedTime.toString().length + description.length) % 6).toString();
 
   return (
     <div
-      className={`fish ${source === 'CenterFishTank' ? 'fish-center' : ''} ${
-        source === 'ExpandedFishTank' ? 'fish-expand' : ''
-      }`}
+      className={`fish ${source === 'CenterFishTank' ? 'fish-center' : ''} 
+      ${source === 'ExpandedFishTank' ? 'fish-expand' : ''}
+      ${source === 'FishTank' ? 'fish-tank' : ''}`
+    }
       style={fishStyle}> 
         <h4 className="fish-text_name">
           {name}--{selectedTime}
         </h4>
         <p className={`fish-text_date ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>
-          {startDate}--{endDate}
+          From: {startDate} &nbsp;
+          To: {endDate}
         </p>
-        <p className={`fish-text_description ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>{description}</p>
+        <p className={`fish-text_description ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>Description: {description}</p>
       <img src={selectedImage} alt="Fish" className={`fish-image1 ${num}`} />
     </div>
   );

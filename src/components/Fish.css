@@ -138,7 +138,33 @@
   }
 }
 
+.fish-center .fish-text_name{
+  background-color: white;
+  padding: 4px;
+  border-radius: 2px;
+}
 
+.fish-center .fish-text_time{
+  background-color: white;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+.fish-center .fish-text_date{
+  background-color: white;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+.fish-center .fish-text_description{
+  background-color: white;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+.fish-tank .fish-text_date{
+  font-size: 1.19vw;
+}
 
 .fish-text_name,
 .fish-text_time,
@@ -183,7 +209,6 @@
 .fish-expand .fish-text_description{
   display: none !important;
 }
-
 
 
 
