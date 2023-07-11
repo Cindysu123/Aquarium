@@ -1,11 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
-import './Fish.css';
-import img1 from '../img/fish/fish_1.gif';
-import img2 from '../img/fish/fish_2.gif';
-import img3 from '../img/fish/fish_3.gif';
-import img4 from '../img/fish/fish_4.gif';
-import img5 from '../img/fish/fish_5.gif';
-import bubble from '../img/speech-bubble.png'
+import '../assets/css/Fish.css';
+import img1 from '../assets/img/fish/fish_1.gif';
+import img2 from '../assets/img/fish/fish_2.gif';
+import img3 from '../assets/img/fish/fish_3.gif';
+import img4 from '../assets/img/fish/fish_4.gif';
+import img5 from '../assets/img/fish/fish_5.gif';
 
 const Fish = ({ name, source, selectedTime, description, startDate, endDate }) => {
   // Array of fish images

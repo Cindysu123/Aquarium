@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import bubble from '../img/bubble.png'
-import "./bubble.css"
+import bubble from '../assets/img/bubble.png'
+import "../assets/css/bubble.css"
 const Bubble = ({ source }) => {
     return(
         <div className={`Bubble-container ${source === 'Expanded' ? 'moveUp' : ''} ${source === 'center' ? 'centered' : ''}`}>

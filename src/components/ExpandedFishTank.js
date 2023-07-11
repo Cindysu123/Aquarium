@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Fish from './Fish';
-import './ExpandedFishTank.css';
-import bg1 from '../img/fish/bg1.png';
-import f1 from '../img/fish/f1.png';
-import underwaterSound from '../Sound/underwater.mp3';
-import On from '../img/fish/Volume Up.png';
-import Off from '../img/fish/Volume Off.png';
+import '../assets/css/ExpandedFishTank.css';
+import bg1 from '../assets/img/fish/bg1.png';
+import f1 from '../assets/img/fish/f1.png';
+import underwaterSound from '../assets/Sound/underwater.mp3';
+import On from '../assets/img/fish/Volume Up.png';
+import Off from '../assets/img/fish/Volume Off.png';
 import Plants from './plants';
 import Bubble from './bubble';
 

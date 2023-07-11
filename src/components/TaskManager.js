@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FishTank from './FishTank';
 import CenterFishTank from './CenterFishTank';
-import './TaskManager.css';
+import '../assets/css/TaskManager.css';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Import the styles
 import 'react-date-range/dist/theme/default.css'; // Import the theme

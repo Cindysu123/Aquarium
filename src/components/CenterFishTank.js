@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Fish from './Fish';
 import ExpandedFishTank from './ExpandedFishTank'
-import './CenterFishTank.css';
-import bg1 from '../img/fish/bg1.png';
-import f1 from '../img/fish/f1.png';
-import fishTank from '../img/fish/background_5c.png';
-import settingImg from '../img/fish/Setting.png';
-import NoteIon from '../img/Note.png'
+import '../assets/css/CenterFishTank.css';
+import bg1 from '../assets/img/fish/bg1.png';
+import f1 from '../assets/img/fish/f1.png';
+import fishTank from '../assets/img/fish/background_5c.png';
+import settingImg from '../assets/img/fish/Setting.png';
+import NoteIon from '../assets/img/Note.png'
 import Bubble from './bubble'
-
 import Plants from './plants';
 
 const CenterFishTank = ({ tasks }) => {

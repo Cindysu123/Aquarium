@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Fish from './Fish';
-import './FishTank.css';
+import '../assets/css/FishTank.css';
 
 const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
   const [expanded, setExpanded] = useState(true);
