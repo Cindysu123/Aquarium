@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskManager from './components/TaskManager';
 import './App.css';
-import img from './img/Top.png';
+import img from './assets/img/Top.png';
 
 const App = () => {
   // Mock tasks data for demonstration purposes
