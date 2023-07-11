@@ -38,7 +38,7 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
     return totalHourse;
   }
   
-  const topPosition = `${62 + (convertToHourse() - 7) * 10.4 - 10}vh`;
+  const topPosition = `${48 + (convertToHourse() - 7) * 10.8}vh`;
 
   if (!document.fishColors) {
     document.fishColors = {};
