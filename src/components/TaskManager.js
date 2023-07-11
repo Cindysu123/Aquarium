@@ -44,11 +44,24 @@ const TaskManager = () => {
   }, [tasks]);
 
   const handleAddTask = () => {
-    if (inputValue.trim() && 
-        selectedTank && 
-        selectedTime && 
-        selectedDateRange.startDate &&
-        selectedDateRange.endDate
+    console.log(selectedDateRange.startDate.toDateString());
+    const selectedTimeHours = selectedTime.slice(0, 2);
+    const selectedTimeMinutes = selectedTime.slice(3, 5);
+  
+    const selectedTimeDate = new Date();
+    selectedTimeDate.setHours(selectedTimeHours);
+    selectedTimeDate.setMinutes(selectedTimeMinutes);
+  
+    const minimumTime = new Date();
+    minimumTime.setHours(7);
+    minimumTime.setMinutes(0);
+  
+    if (
+      inputValue.trim() &&
+      selectedTank &&
+      selectedTimeDate >= minimumTime && // Check if selectedTime is not earlier than 7:00 AM
+      selectedDateRange.startDate &&
+      selectedDateRange.endDate
     ) {
       const newTask = {
         id: tasks.length + 1,
@@ -65,10 +78,10 @@ const TaskManager = () => {
       setTasks([...tasks, newTask]);
       setInputValue('');
       setDescription('');
-      setSelectedDateRange({ startDate: new Date(), endDate: null});
+      setSelectedDateRange({ startDate: new Date(), endDate: null });
       setErrorMessage('');
     } else {
-      setErrorMessage('Please select task type, date, and time.');
+      setErrorMessage('Please select task type, date, and time later than 7am.');
     }
   };
 

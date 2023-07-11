@@ -23,7 +23,7 @@ const CenterFishTank = ({ tasks }) => {
   const [selectedDate, setSelectedDate] = useState('');
   const [isExpanded, setIsExpanded] = useState(true);
   const [showReminder, setShowReminder] = useState();
-  const [userInput, setUserInput] = useState(''); // New state variable to store user input
+  const [userInput, setUserInput] = useState('');
   const [showInput, setShowInput] = useState(false);
 
   const handleImageClick = () => {
@@ -43,7 +43,7 @@ const CenterFishTank = ({ tasks }) => {
   };
 
   const handleDateChange = (event) => {
-    console.log(event.target.value);
+    console.log(new Date());
     setSelectedDate(event.target.value);
   };
 
@@ -54,19 +54,19 @@ const CenterFishTank = ({ tasks }) => {
       }
       const startDate = new Date(task.dateRange.startDate);
       const endDate = new Date(task.dateRange.endDate);
-      const selected = new Date(selectedDate.replace(/-/g, "/")); // Convert selectedDate format to match
+      const selected = new Date(selectedDate.replace(/-/g, "/"));
       return selected >= startDate && selected <= endDate;
     });
     setFilteredFish(filteredTasks);
   }, [tasks, selectedDate]);
 
   useEffect(() => {
-    const options = { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' };
+    const options = { weekday: 'short', month: 'short', day: 'numeric' };
     const today = new Date().toLocaleDateString('en-US', options);
     const filteredTasks = tasks.filter((task) => {
       const startDate = new Date(task.dateRange.startDate).toLocaleDateString('en-US', options);
       const endDate = new Date(task.dateRange.endDate).toLocaleDateString('en-US', options);
-      return startDate <= today && endDate >= today;
+      return new Date(startDate) <= new Date(today) && new Date(endDate) >= new Date(today) && task.tank !== "Completed";
     });
     setFilteredTodayFish(filteredTasks);
   }, [tasks]);
@@ -79,16 +79,16 @@ const CenterFishTank = ({ tasks }) => {
       const minute = date.getMinutes().toString().padStart(2, '0');
 
       const filtered3 = tasks.filter((task) => {
-        const options = { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' };
+        const options = { weekday: 'short', month: 'short', day: 'numeric' };
         const today = new Date().toLocaleDateString('en-US', options);
         const startDate = new Date(task.dateRange.startDate).toLocaleDateString('en-US', options);
         const endDate = new Date(task.dateRange.endDate).toLocaleDateString('en-US', options);
         const [taskHour, taskMinute] = task.time.split(':').map((timePart) => parseInt(timePart));
         return (
-          startDate <= today && 
-          endDate >= today &&
+          new Date(startDate) <= new Date(today) && 
+          new Date(endDate) >= new Date(today) &&
           task.remind === 0 &&
-          task.source !== "Completed" &&
+          task.tank !== "Completed" &&
           taskHour === parseInt(hour) &&
           taskMinute <= parseInt(minute) + 5 &&
           taskMinute >= parseInt(minute) - 5

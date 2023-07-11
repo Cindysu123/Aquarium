@@ -81,4 +81,16 @@
 
   .time{
     font-size: 18vw;
+    animation: wave;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg) rotateZ(0deg);
+      color: rgba(0, 30, 100, 1);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+      color: rgba(50, 230, 255, 1);
+    }
   }

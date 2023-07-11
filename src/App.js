@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TaskManager from './components/TaskManager';
 import './App.css';
 import img from './assets/img/Top.png';
+import LoadingSpinner from './components/LoadingSpinner';
+
 
 const App = () => {
-  // Mock tasks data for demonstration purposes
-  const tasks = [
-    { id: 1, name: 'Task 1', color: '#ff0000' },
-    { id: 2, name: 'Task 2', color: '#00ff00' },
-    { id: 3, name: 'Task 3', color: '#0000ff' },
-  ];
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate an asynchronous task
+    setTimeout(() => {
+      setIsLoading(false); // Set isLoading to false to hide the spinner
+    }, 2000);
+  }, []);
 
   return (
     <div className="app-container">
+      <div>
+        <LoadingSpinner isLoading={isLoading} />
+      </div>
       <img src={img} alt="Top" className="top-image" />
       <div className="content-container">
         <div className="side-fish-tanks">

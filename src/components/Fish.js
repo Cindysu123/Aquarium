@@ -38,8 +38,7 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
     return totalHourse;
   }
   
-  const topPosition = `${58.5 + (convertToHourse() - 7) * 10.8 - 10}vh`;
-  const topPosition2 = `${(convertToHourse() - 7) / 10.8 / 2 - 20}vh`;
+  const topPosition = `${62 + (convertToHourse() - 7) * 10.2 - 10}vh`;
 
   if (!document.fishColors) {
     document.fishColors = {};
@@ -67,7 +66,6 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
 
   if (source === 'ExpandedFishTank') {
     fishStyle.position = 'absolute';
-    fishStyle.top = topPosition2;
     fishStyle.width = '60vh';
   }
 
