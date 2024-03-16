@@ -20,7 +20,7 @@ const CenterFishTank = ({ tasks }) => {
   const [filteredFish, setFilteredFish] = useState([]);
   const [filteredTodayFish, setFilteredTodayFish] = useState([]);
   const [filteredRemindFish, setFilteredRemindFish] = useState([]);
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [isExpanded, setIsExpanded] = useState(true);
   const [showReminder, setShowReminder] = useState();
   const [userInput, setUserInput] = useState('');
@@ -41,9 +41,9 @@ const CenterFishTank = ({ tasks }) => {
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
   };
+  
 
   const handleDateChange = (event) => {
-    console.log(new Date());
     setSelectedDate(event.target.value);
   };
 
@@ -216,7 +216,7 @@ const CenterFishTank = ({ tasks }) => {
     const totalHourse = hours + minutes/60;
     const timelineStart = 58.5;
   
-    const currentPosition = timelineStart + (10.8)*(totalHourse-7);
+    const currentPosition = timelineStart + (10.7)*(totalHourse-7);
     return `${currentPosition}vh`;
   };
 
@@ -227,7 +227,7 @@ const CenterFishTank = ({ tasks }) => {
     const totalHourse = hours + minutes/60;
     const timelineStart = 58.5;
   
-    const currentPosition = timelineStart + (10.8)*(totalHourse-7) - 2;
+    const currentPosition = timelineStart + (10.7)*(totalHourse-7) - 2;
     return `${currentPosition}vh`;
   }
 
@@ -284,7 +284,13 @@ const CenterFishTank = ({ tasks }) => {
               value={userInput}
               onChange={handleInputChange}
               placeholder="Daily Note"
-              style={{ height: userInput.split('\n').length * 1.5 + 'em' }}
+              style={{ 
+                height: userInput.split('\n').length * 1.5 + 2 + 'em',
+                width: "30vw",
+                paddingLeft:"1vw",
+                paddingRight:"1vw",
+                paddingTop:"4vw",
+                zIndex:"99"}}
             />
           <button onClick={handleSave} className="save-button">
             Save
@@ -295,12 +301,12 @@ const CenterFishTank = ({ tasks }) => {
         </div>
       )}
       <div className='today-task'>
-      <div className="task-header">
-        <button onClick={toggleExpand} className={`ex-b ${isExpanded ? 'expanded' : 'collapsed'}`}>
-          {isExpanded ? '-' : '+'}
-        </button>
-        <span className='Today-t'>Today's Task</span>
-      </div>
+        <div className="task-header">
+          <button onClick={toggleExpand} className={`ex-b ${isExpanded ? 'expanded' : 'collapsed'}`} style={{border:"2px solid #445376"}}>
+            {isExpanded ? '-' : '+'}
+          </button>
+          <span className='Today-t'>Today's Task</span>
+        </div>
         {isExpanded && filteredTodayFish.map((task) => (
           <div key={task.id} className="task-today">
             <div className="task-info">
@@ -397,48 +403,8 @@ const CenterFishTank = ({ tasks }) => {
               </div>
             ))}
           </div>
-          <img
-            src={bg1}
-            className="background-water"
-            style={{ filter: `hue-rotate(${waterHue}deg) blur(2px)` }}
-          />
-          <img
-            src={f1}
-            className="background-floor"
-            style={{
-              filter: `hue-rotate(${floorHue}deg)`,
-            }}
-          />
           <Plants source = 'center'/>
           <Bubble source = 'center'/>
-        </div>
-      )}
-      <img src={settingImg} alt="Settings" className="setting-image" onClick={toggleSettings2} style={{ transform: `rotate(${rotation}deg)` }} />
-      {showSettings && (
-        <div className='setting-container fade-in'>
-          <div className="slider-container">
-            <label htmlFor="waterHueSlider" className='label-w'>Water Color: </label>
-            <input
-              type="range"
-              min="0"
-              max="350"
-              value={waterHue}
-              onChange={handleWaterHueChange}
-              className="hue-slider water-slider"
-            />
-            <label htmlFor="floorHueSlider" className='label-f'>Floor Color: </label>
-            <input
-              type="range"
-              min="0"
-              max="360"
-              value={floorHue}
-              onChange={handleFloorHueChange}
-              className="hue-slider floor-slider"
-            />
-          </div>
-          <img src={bg1} className="background-water-small" style={{ filter: `hue-rotate(${waterHue}deg)` }}/>
-          <img src={f1} className="background-floor-small" style={{ filter: `hue-rotate(${floorHue}deg) saturate(100%)` }}/>
-          <img src ={fishTank} className="fishTank-small"/>
         </div>
       )}
     </div>

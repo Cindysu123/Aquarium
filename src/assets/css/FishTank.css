@@ -59,24 +59,23 @@
     width: 5vh;
     height: 5vh;
     background-color: #4da6ff;
-    color: white;
-    font-weight: bold;
+    color: #445376;
     font-size: 3vh;
   }
 
   .tank-name{
     font-size: 3vh;
+    color: #445376;
   }
 
   .delete-task-button {
     background-color: #ff4d4f;
     color: white;
     border: none;
-    padding: 1vh 2vh;
+    padding: 0.5vw 1vw;
     font-size: 2.6vh;
     cursor: pointer;
     border-radius: 4px;
-    margin-left: 2vh;
     transition: background-color 0.3s ease;
   }
   
@@ -87,9 +86,10 @@
   .task{
     margin: 1vh;
     padding: 1vh;
-    background-color: #dff6fd;
+    background-color: #f1e9e7;
     border-radius: 10px;
     transition: opacity 0.3s ease;
+    border: solid 2px #414f70;
   }
 
   .task.expanded {
@@ -107,7 +107,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 2.5vh;
-    width: 18vh;
+    width: 10vh;
     outline: none;
   }
   

@@ -3,8 +3,8 @@ import FishTank from './FishTank';
 import CenterFishTank from './CenterFishTank';
 import '../assets/css/TaskManager.css';
 import { DateRangePicker } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // Import the styles
-import 'react-date-range/dist/theme/default.css'; // Import the theme
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
@@ -34,14 +34,14 @@ const TaskManager = () => {
     setIsCalendarOpen(!isCalendarOpen);
   };
 
-  useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    setTasks(storedTasks);
-  }, []);
+  // useEffect(() => {
+  //   const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  //   setTasks(storedTasks);
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+  // useEffect(() => {
+  //   localStorage.setItem('tasks', JSON.stringify(tasks));
+  // }, [tasks]);
 
   const handleAddTask = () => {
     console.log(selectedDateRange.startDate.toDateString());
@@ -59,7 +59,7 @@ const TaskManager = () => {
     if (
       inputValue.trim() &&
       selectedTank &&
-      selectedTimeDate >= minimumTime && // Check if selectedTime is not earlier than 7:00 AM
+      selectedTimeDate >= minimumTime &&
       selectedDateRange.startDate &&
       selectedDateRange.endDate
     ) {
@@ -118,24 +118,26 @@ const TaskManager = () => {
       <div className='Right'>
         <div className="Task-input-wrapper">
           <h2 className='add-task'>Add Task</h2>
-          <div className='input-wrapper'>
-            <input
-              type="text"
-              className='Task-name-input text-input'
-              name="inputValue"
-              value={inputValue}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
-              placeholder="Enter a task"
-            />
-            <input
-              type="text"
-              className='Task-description-input text-input'
-              name="description"
-              value={description}
-              onChange={handleInputChange}
-              placeholder="Enter a description"
-            />
+          <div className='input-wrapper' style={{margin:"0.5vw"}}>
+            <div style={{display:"flex"}}>
+              <input
+                type="text"
+                className='Task-name-input text-input'
+                name="inputValue"
+                value={inputValue}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
+                placeholder="Enter a task"
+              />
+              <input
+                type="text"
+                className='Task-description-input text-input'
+                name="description"
+                value={description}
+                onChange={handleInputChange}
+                placeholder="Enter a description"
+              />
+            </div>
             <div className="select-wrapper">
               <select value={selectedTank} onChange={handleTankChange} className='Select todo'>
                 <option value="">Select Task Type</option>

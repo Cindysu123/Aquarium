@@ -179,7 +179,7 @@ input[type="range"]::-ms-fill-upper {
 .setting-image {
   position: absolute;
   width: 4vh;
-  top: 51vh;
+  top: 43vh;
   left: 198vh;
   cursor: pointer;
   transition: transform 0.8s ease;
@@ -189,16 +189,12 @@ input[type="range"]::-ms-fill-upper {
   font-size: 3vh;
 }
 
-.fullscreen-button {
-  /* Add your styles for the full-screen button */
-}
-
 .Expand-b {
-  background-color: #3dacf0;
+  background-color: #445376;
   border: none;
   border-radius: 5px;
   position: absolute;
-  z-index: 9998;
+  z-index: 999;
   font-size: 3vh;
   transition: background-color 0.3s ease;
   transition: 0.3s;
@@ -212,7 +208,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .normal{
-  top: 50vh;
+  top: 42vh;
   left: 30vw;
 }
 
@@ -228,7 +224,9 @@ input[type="range"]::-ms-fill-upper {
   left: 6vw;
   width: 17.3vw;
   font-size: 2.5vh;
-  padding: 0.5vh;
+  padding: 0.5vw;
+  border: 2px solid #445376;
+  border-radius: 0.5vw;
 }
 
 .search-results{
@@ -244,7 +242,7 @@ input[type="range"]::-ms-fill-upper {
 
 .fish-date{
   position: absolute;
-  top: 50vh;
+  top: 42vh;
   left: 50vw;
   width: 16vw;
   height: 6vh;
@@ -261,14 +259,15 @@ input[type="range"]::-ms-fill-upper {
 .today-task{
   padding: 10px;
   position: absolute;
-  background-color: #f3f5f9;
+  background-color: #f1e9e7;
   top: 24vh;
   left: 6vw;
   width: 37vh;
-  border-radius: 5px;
+  border-radius: 0.5vw;
   font-weight: bold;
   color: #51516f;
   z-index: 99;
+  border: 2px solid #445376;
 }
 
 .task-info{
@@ -338,15 +337,15 @@ input[type="range"]::-ms-fill-upper {
 .User-input{
   position: absolute;
   right: 10vw;
-  top: 60vh;
+  top: 50vh;
   width: 20vw;
-  background-color: #ffffff;
+  background-color: #f1e9e7;
 }
 
 .Note-b{
   position: absolute;
   right: 12vw;
-  top: 50.4vh;
+  top: 19vw;
   width: 2vw;
   transition: 0.3s;
 }
@@ -358,13 +357,15 @@ input[type="range"]::-ms-fill-upper {
 
 .save-button{
   position: absolute;
-  top: 62vh;
+  top: 52vh;
   right: 12vw;
-  background-color: #4b5bab;
+  background-color: #445376;
   border: none;
   border-radius: 5px;
   font-size: 1.4vw;
   color: white;
+  padding: 0.5vw 1vw;
+  z-index:100;
 }
 
 .save-button:hover{
@@ -373,13 +374,15 @@ input[type="range"]::-ms-fill-upper {
 
 .clear-button{
   position: absolute;
-  top: 62vh;
-  right: 16.8vw;
-  background-color: #4b5bab;
+  top: 52vh;
+  right: 18vw;
+  background-color: #445376;
   border: none;
   border-radius: 5px;
   font-size: 1.4vw;
   color: white;
+  padding: 0.5vw 1vw;
+  z-index:100;
 }
 
 .clear-button:hover{

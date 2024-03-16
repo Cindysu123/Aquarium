@@ -1,9 +1,46 @@
+body{
+  background: #e0f2f0;
+}
+
+@font-face {
+  font-family: 'Jura';
+  src: url('./assets//font/Jura-VariableFont_wght.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.jura{
+  font-family: 'Jura'
+}
+
 .top-image {
-    width: 16%; /* Adjust the width as desired */
+    width: 16%;
   }
   
 .app-container {
     margin-top: 2%;
-    margin-left: 6%; /* Adjust the left margin as desired */
-    margin-right: 6%; /* Adjust the right margin as desired */
+    margin-left: 6%;
+    margin-right: 6%;
+}
+
+.dk_green_bg{
+  position: absolute;
+  top: 220vh;
+  left: 0;
+  width: 100vw;
+  height: 20vw;
+  background: #527C87;
+  z-index: -10;
+}
+
+.normal_text{
+  font-size: 1.6vw;
+}
+
+.flip-horizontal {
+  transform: scaleX(-1);
+}
+
+button{
+  cursor: pointer;
 }

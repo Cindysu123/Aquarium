@@ -1,29 +1,29 @@
 import React, { useRef, useEffect, useState } from 'react';
 import '../assets/css/Fish.css';
-import img1 from '../assets/img/fish/fish_1.gif';
-import img2 from '../assets/img/fish/fish_2.gif';
-import img3 from '../assets/img/fish/fish_3.gif';
-import img4 from '../assets/img/fish/fish_4.gif';
-import img5 from '../assets/img/fish/fish_5.gif';
+import img1 from '../assets/img/fish/Synfig Animation 1.gif';
+import img2 from '../assets/img/fish/Synfig Animation 2.gif';
+import img3 from '../assets/img/fish/Synfig Animation 3.gif';
+import img4 from '../assets/img/fish/Synfig Animation 4.gif';
+import img5 from '../assets/img/fish/Synfig Animation 5.gif';
+import img6 from '../assets/img/fish/Synfig Animation 6.gif';
 
 const Fish = ({ name, source, selectedTime, description, startDate, endDate }) => {
-  // Array of fish images
-  const fishImages = [img1, img2, img3, img4, img5];
+  const fishImages = [img1, img2, img3, img4, img5, img6];
 
   const getRandomColor = () => {
     let randomColor = `#473b78`;
     var timeParts = selectedTime.split(":");
     var hours = parseInt(timeParts[0]);
     if (0 < hours && hours < 10) {
-      randomColor = `#DFF6FD`;
+      randomColor = `#f1e9e7`;
     } else if (10 <= hours && hours < 14) {
-      randomColor = `#CBE5FF`;
+      randomColor = `#f1e9e7`;
     } else if (14 <= hours && hours < 17) {
-      randomColor = `#B8C9E8`;
+      randomColor = `#f1e9e7`;
     } else if (17 <= hours && hours < 20) {
-      randomColor = `#959CC1`;
+      randomColor = `#f1e9e7`;
     } else {
-      randomColor = `#C1BADD`;
+      randomColor = `#f1e9e7`;
     }
     return randomColor;
   };
@@ -69,7 +69,6 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
     fishStyle.width = '60vh';
   }
 
-  // Calculate the index based on the sum of lengths
   const imageIndex = (name.length + selectedTime.toString().length + description.length) % 5;
   const selectedImage = fishImages[imageIndex];
 
@@ -81,16 +80,17 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
       ${source === 'ExpandedFishTank' ? 'fish-expand' : ''}
       ${source === 'FishTank' ? 'fish-tank' : ''}`
     }
-      style={fishStyle}> 
+      style={fishStyle}>
+        <img src={selectedImage} alt="Fish" className={`fish-image1 ${num}`} style={{width:"10vw"}}/> 
         <h4 className="fish-text_name">
-          {name}--{selectedTime}
+          {name}
         </h4>
-        <p className={`fish-text_date ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>
+        <div>{selectedTime}</div>
+        <p style={{textAlign:"center"}} className={`fish-text_date ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>
           From: {startDate} &nbsp;
           To: {endDate}
         </p>
-        <p className={`fish-text_description ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>Description: {description}</p>
-      <img src={selectedImage} alt="Fish" className={`fish-image1 ${num}`} />
+        {/* <p className={`fish-text_description ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>Description: {description}</p> */}
     </div>
   );
 };

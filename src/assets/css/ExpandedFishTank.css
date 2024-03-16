@@ -4,7 +4,7 @@
     left: -5vw;
     width: 110vw;
     height: 100vh;
-    z-index: 9991; /* Adjust the z-index as needed */
+    z-index: 9991;
   }
   
   
@@ -34,10 +34,10 @@
   
   .expanded-fish-tank .background-floor {
     position: absolute;
-    top: 74vh;
+    top: 19vh;
     left: 0;
     width: 110vw;
-    height: 30vh;
+    height: 84vh;
   }
 
   .music-b{
@@ -64,23 +64,24 @@
 
   .datetime{
     position: absolute;
-    top: 10vh;
-    left: 15.5vw;
+    top: 30vh;
+    left: 40vw;
     font-size: 10vw;
     z-index: -10;
-    color: white;
+    color: #445376;
     font-weight: bold;
+    font-family: 'Jura';
   }
 
   .date{
     position: absolute;
+    font-family: 'Jura';
     font-size: 5vw;
-    right: 1vw;
-    top: 50vh;
+    right: 8vw;
+    top: -4vw;
   }
 
   .time{
-    font-size: 18vw;
     animation: wave;
   }
 

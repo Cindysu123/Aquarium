@@ -3,8 +3,8 @@
 }
 
 .center-p{
-    top: 174vh;
-    z-index: -1;
+    top: 138vh;
+    z-index: 0;
 }
 
 .expanded-p{
@@ -14,100 +14,76 @@
 
 .plants, .Shell{
     position: absolute;
-    width: 8vw;
 }
 
 .center-p .p1{
-    top:20vh;
-    left: 2vw;
-}
-.center-p .p5{
-    top:26vh;
-    left: 8vw;
+    top:64vh;
+    left: 5vw;
+    width: 10vw;
 }
 .center-p .p2{
-    top:21vh;
-    left: 13vw;
-}
-.center-p .p6{
-    top:28vh;
-    left: 18vw;
+    top:40vh;
+    left: 3vw;
+    width: 20vw;
 }
 .center-p .p3{
-    top:21vh;
-    left: 30vw;
+    top:64vh;
+    left: 24vw;
+    width: 10vw;
 }
 .center-p .p4{
-    top:25vh;
-    left: 54vw;
+    top:56vh;
+    left: 46vw;
+    width: 16vw;
+}
+.center-p .p5{
+    top: 60vh;
+    left: 42vw;
+    width: 14vw;
+}
+.center-p .p6{
+    top: 65vh;
+    left: 30vw;
+    width: 10vw;
+}
+.center-p .p7{
+    top: 32vh;
+    left: 44vw;
+    width: 26vw;
 }
 
-.center-p .pl1{
-    top: -3vh;
-    left: 5vw;
-    width: 10vh;
-}
-
-.center-p .pl2{
-    top: 0vh;
-    left: 40vw;
-    width: 10vh;
-}
-
-.center-p .pl3{
-    top: 0vh;
-    left: 25vw;
-    width: 10vh;
-}
-
-.center-p .Shell{
-    top: 50vh;
-    left: 90vh;
-}
-
-
-
-.expanded-p .p5{
-    top:50vh;
-    left: 16vw;
-}
-.expanded-p .p4{
-    top:46vh;
-    left: 20vw;
-}
 .expanded-p .p1{
-    top:41vh;
-    left: 50vw;
-}
-.expanded-p .p3{
-    top:48vh;
-    left: 60vw;
+    top: 26vh;
+    left: 8vw;
+    width: 14vw;
 }
 .expanded-p .p2{
-    top:41vh;
-    left: 30vw;
+    top:22vh;
+    left: 18vw;
+    width: 18vw;
+}
+.expanded-p .p3{
+    top:36vh;
+    left: 50vw;
+    width: 10vw;
+}
+.expanded-p .p4{
+    top:18vh;
+    left: 84vw;
+    width: 20vw;
+}
+.expanded-p .p5{
+    top:20vh;
+    left: 88vw;
+    width: 20vw;
 }
 .expanded-p .p6{
-    top:55vh;
-    left: 54vw;
+    top:34vh;
+    left: 44vw;
+    width: 10vw;
 }
-
-.expanded-p .pl1{
-    top: 20vh;
-    left: 5vw;
-}
-
-.expanded-p .pl2{
-    top: 15vh;
-    left: 40vw;
-}
-
-.expanded-p .pl3{
-    top: 5vh;
-    left: 95vw;
-}
-
-.expanded-p .Shell{
-    top: 50vh;
-    left: 90vw;
+.expanded-p .p7{
+    top:-6vh;
+    left: -4vw;
+    width: 30vw;
 }
