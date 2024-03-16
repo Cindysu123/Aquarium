@@ -116,7 +116,7 @@ const TaskManager = () => {
   return (
     <div className="TaskManager">
       <div className='Right'>
-        <div className="Task-input-wrapper">
+        <div className="Task-input-wrapper expand">
           <h2 className='add-task'>Add Task</h2>
           <div className='input-wrapper' style={{margin:"0.5vw"}}>
             <div style={{display:"flex"}}>
@@ -170,7 +170,7 @@ const TaskManager = () => {
                   />
                 </div>
               )}
-              <button onClick={handleAddTask} className='Add-Task'>Add Task</button>
+              <button onClick={handleAddTask} className='Add-Task hover_change_color_blue'>Add Task</button>
               {errorMessage && (
                 <div className="error-message">*{errorMessage}</div>
               )}
@@ -185,7 +185,7 @@ const TaskManager = () => {
           />
         </div>
       </div>
-      <div className='Left'>
+      <div className='Left fadeIn_Right'>
         <div className="fish-tanks-wrapper">
           <div className="fish-tanks">
             <FishTank

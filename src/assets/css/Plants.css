@@ -53,37 +53,37 @@
 }
 
 .expanded-p .p1{
-    top: 26vh;
+    top: 34vh;
     left: 8vw;
     width: 14vw;
 }
 .expanded-p .p2{
-    top:22vh;
+    top:30vh;
     left: 18vw;
     width: 18vw;
 }
 .expanded-p .p3{
-    top:36vh;
+    top:44vh;
     left: 50vw;
     width: 10vw;
 }
 .expanded-p .p4{
-    top:18vh;
+    top:26vh;
     left: 84vw;
     width: 20vw;
 }
 .expanded-p .p5{
-    top:20vh;
+    top:26vh;
     left: 88vw;
     width: 20vw;
 }
 .expanded-p .p6{
-    top:34vh;
+    top:42vh;
     left: 44vw;
     width: 10vw;
 }
 .expanded-p .p7{
-    top:-6vh;
+    top:2vh;
     left: -4vw;
     width: 30vw;
 }

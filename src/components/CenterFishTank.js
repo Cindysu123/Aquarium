@@ -136,13 +136,11 @@ const CenterFishTank = ({ tasks }) => {
   };
 
   useEffect(() => {
-    // Add event listener to the 'keydown' event
     window.addEventListener('keydown', handleKeyDown);
     return () => {
-      // Remove event listener when component unmounts
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []); // Empty dependency array to run the effect only once
+  }, []);
 
   const toggleExpansion = () => {
     setExpanded(!expanded);
@@ -159,7 +157,7 @@ const CenterFishTank = ({ tasks }) => {
       } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
       }
-      document.documentElement.style.overflow = 'auto'; // Enable scroll bar
+      document.documentElement.style.overflow = 'auto';
     } else if (!expanded) {
       const elem = document.documentElement;
       if (elem.requestFullscreen) {
@@ -171,10 +169,11 @@ const CenterFishTank = ({ tasks }) => {
       } else if (elem.msRequestFullscreen) {
         elem.msRequestFullscreen();
       }
-      document.documentElement.style.overflow = 'hidden'; // Disable scroll bar
+      document.documentElement.style.overflow = 'hidden';
     }else{
-      document.documentElement.style.overflow = 'auto'; // Enable scroll bar
+      document.documentElement.style.overflow = 'auto';
     }
+    document.documentElement.style.overflowX = 'hidden';
   };
 
   const renderTimeScale = () => {
@@ -300,12 +299,12 @@ const CenterFishTank = ({ tasks }) => {
           </button>
         </div>
       )}
-      <div className='today-task'>
-        <div className="task-header">
+      <div className='today-task fadeIn_Right'>
+        <div className="task-header" style={{display:"flex", margin:"1vw"}}>
           <button onClick={toggleExpand} className={`ex-b ${isExpanded ? 'expanded' : 'collapsed'}`} style={{border:"2px solid #445376"}}>
             {isExpanded ? '-' : '+'}
           </button>
-          <span className='Today-t'>Today's Task</span>
+          <div>Today's Task</div>
         </div>
         {isExpanded && filteredTodayFish.map((task) => (
           <div key={task.id} className="task-today">

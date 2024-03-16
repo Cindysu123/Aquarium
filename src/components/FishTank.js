@@ -81,7 +81,6 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
             startDate={task.dateRange.startDate}
             endDate={task.dateRange.endDate}
           />
-          <div style={{display:"flex", justifyContent:"space-between"}}>
             <select
               value={selectedTank}
               onChange={(event) => handleTankChange(task.id, event)}
@@ -91,7 +90,8 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
               {<option value="In Progress">In Progress</option>}
               {<option value="Completed">Completed</option>}
             </select>
-            <button style={{padding:"0.5vw 1vw", border:"none", background:"#445376", borderRadius:"0.2vw", color:"white", fontSize:"2.6vh", cursor:"pointer"}}
+          <div style={{display:"flex", justifyContent:"space-between"}}>
+            <button className='hover_change_color_blue' style={{padding:"0.5vw 2vw", border:"none", background:"#445376", borderRadius:"0.2vw", color:"white", fontSize:"2.6vh", cursor:"pointer"}}
               onClick={handleDetailClick.bind(null, task)}>Detail</button>
             <button onClick={() => handleTaskDelete(task.id)} className="delete-task-button">
               Delete
@@ -102,7 +102,7 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
       <Modal isOpen={isModalOpen} close={() => setIsModalOpen(false)}>
         {selectedTask && (
           <div style={{marginBottom:"10vw"}}>
-            <div style={{display:"flex", margin:"0 auto" , width:"20vw", alignItems:"center"}}>
+            <div style={{display:"flex", margin:"0 auto" , width:"20vw", alignItems:"center", justifyContent:"space-between"}}>
               <img className="flip-horizontal" src={getFishImage(selectedTask)} alt="Fish" style={{width:"5vw", height:"3vw"}} />
               <h3 style={{fontWeight:"normal", fontSize:"2vw"}}>{selectedTask.name}</h3>
               <img src={getFishImage(selectedTask)} alt="Fish" style={{width:"5vw", height:"3vw"}}/>
@@ -110,7 +110,6 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
             <div style={{display:"flex", justifyContent:"space-between", width:"60vw", margin:"0 auto"}}>
               <div style={{fontWeight:"bold", borderStyle:"dashed", borderWidth:"4px", borderColor:"#445376", borderRadius:"0.8vw", padding:"1vw", width:"30vw", textDecoration:"underline"}}>
                 <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>Status: In Progress</div>
-                <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>Priority: High</div>
                 <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>Due At: {selectedTask.time}</div>
                 <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>From: {selectedTask.dateRange.startDate}</div>
                 <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>To: {selectedTask.dateRange.endDate}</div>
@@ -135,57 +134,75 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
               <div style={{margin:"1vw",fontWeight:"bold", fontSize:"1.4vw"}}>Subtasks:</div>
               <ol style={{fontSize:"1.2vw", margin:"1vw"}}>
                 <li>
-                  <div style={{display:"flex", justifyContent:"space-between"}}>
+                  <div style={{margin:"1vw", display:"flex", justifyContent:"space-between"}}>
                     <div style={{display:"flex"}}>
                       <div style={{fontWeight:"bold"}}>Research Design Trends</div>
                       <div>- Due: March 20, 2024</div>
                     </div>
-                    <img src={check}/>
+                    <input
+                        type="checkbox"
+                        style={{ transform: 'scale(1.5)' }}
+                    />
                   </div>
                 </li>
                 <li>
-                  <div style={{display:"flex", justifyContent:"space-between"}}>
+                  <div style={{margin:"1vw", display:"flex", justifyContent:"space-between"}}>
                     <div style={{display:"flex"}}>
                       <div style={{fontWeight:"bold"}}>Create Wireframes</div>
                       <div>- Due: March 25, 2024</div>
                     </div>
-                    <img src={check}/>
+                    <input
+                        type="checkbox"
+                        style={{ transform: 'scale(1.5)' }}
+                    />
                   </div>
                 </li>
                 <li>
-                  <div style={{display:"flex", justifyContent:"space-between"}}>
+                  <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
                     <div style={{display:"flex"}}>
                       <div style={{fontWeight:"bold"}}>Develop Mockups</div>
                       <div>- Due: April 1, 2024</div>
                     </div>
-                    <img src={check}/>
+                    <input
+                        type="checkbox"
+                        style={{ transform: 'scale(1.5)' }}
+                    />
                   </div>
                 </li>
                 <li>
-                  <div style={{display:"flex", justifyContent:"space-between"}}>
+                  <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
                     <div style={{display:"flex"}}>
                       <div style={{fontWeight:"bold"}}>Gather Feedback on Mockups</div>
                       <div>- Due: April 5, 2024</div>
                     </div>
-                    <img src={check}/>
+                    <input
+                        type="checkbox"
+                        style={{ transform: 'scale(1.5)' }}
+                    />
                   </div>
                 </li>
                 <li>
-                  <div style={{display:"flex", justifyContent:"space-between"}}>
+                  <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
                     <div style={{display:"flex"}}>
                       <div style={{fontWeight:"bold"}}>Finalize Design</div>
                       <div>- Due: April 10</div>
                     </div>
-                    <img src={check}/>
+                    <input
+                        type="checkbox"
+                        style={{ transform: 'scale(1.5)' }}
+                    />
                   </div>
                 </li>
                 <li>
-                  <div style={{display:"flex", justifyContent:"space-between"}}>
+                  <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
                     <div style={{display:"flex"}}>
                       <div style={{fontWeight:"bold"}}>Implement Design on Website</div>
                       <div>- Due: April 14, 2024</div>
                     </div>
-                    <img src={check}/>
+                    <input
+                        type="checkbox"
+                        style={{ transform: 'scale(1.5)' }}
+                    />
                   </div>
                 </li>
               </ol>

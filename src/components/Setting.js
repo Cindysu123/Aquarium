@@ -21,7 +21,7 @@ const Setting = () => {
                         <img src={user} style={{width:"3vw"}}/>
                         <div style={{fontWeight:"bold"}}>User Name</div>
                     </div>
-                    <button style={{display:"flex", border:"solid 2px #445376",width:"10vw", alignItems:"center", borderRadius:"0.5vw"}}>
+                    <button className='home_setting' style={{display:"flex", border:"solid 2px #445376",width:"10vw", alignItems:"center", borderRadius:"0.5vw"}}>
                         <img src={edit} style={{width:"2vw"}}/>
                         <div style={{color:"#445376"}}>Edit Setting</div>
                     </button>
@@ -60,13 +60,16 @@ const Setting = () => {
                         </div>
                         <div>
                             <div style={{fontWeight:"bold"}}>Account Security</div>
-                            <div style={{display:"flex", width:"20vw", justifyContent:"space-between"}}>
+                            <div style={{ display: "flex", width: "20vw", justifyContent: "space-between", alignItems: "center" }}>
                                 <div>
                                     Two-Factor Authentication
                                 </div>
-                                <img src={check}/>
+                                <input
+                                    type="checkbox"
+                                    style={{ transform: 'scale(1.5)' }}
+                                />
                             </div>
-                            <button style={{color:"white", background:"#445376", borderRadius:"0.5vw", padding:"1vw", border:"none"}}>Change Password</button>
+                            <button className='goback_btn' style={{marginTop:"0.5vw",color:"white", background:"#445376", borderRadius:"0.5vw", padding:"1vw", border:"none"}}>Change Password</button>
                         </div>
                     </div>
                     <div style={{margin:"1vw"}}>
@@ -77,15 +80,24 @@ const Setting = () => {
                         <div>
                             <div style={{display:"flex", width:"16vw", justifyContent:"space-between", margin:"1vw"}}>
                                 <div>Task Assignments</div>
-                                <img src={check} style={{width:"2vw"}}/>
+                                <input
+                                    type="checkbox"
+                                    style={{ transform: 'scale(1.5)' }}
+                                />
                             </div>
                             <div style={{display:"flex", width:"16vw", justifyContent:"space-between", margin:"1vw"}}>
                                 <div>Deadline Reminders</div>
-                                <img src={check} style={{width:"2vw"}}/>
+                                <input
+                                    type="checkbox"
+                                    style={{ transform: 'scale(1.5)' }}
+                                />
                             </div>
                             <div style={{display:"flex", width:"16vw", justifyContent:"space-between", margin:"1vw"}}>
                                 <div>Weekly Summary</div>
-                                <img src={check} style={{width:"2vw"}}/>
+                                <input
+                                    type="checkbox"
+                                    style={{ transform: 'scale(1.5)' }}
+                                />
                             </div>
                         </div>
                         <button style={{float:"right",color:"white", background:"#bb486e", borderRadius:"0.5vw", padding:"1vw", border:"2px solid #445376"}}>Delete Account</button>

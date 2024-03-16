@@ -60,7 +60,6 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
     fishStyle.backgroundColor = document.fishColors[name];
     fishStyle.width = '30vh';
     fishStyle.color = '#51516F';
-    fishStyle.padding = '10px';
     fishStyle.margin = '10px';
   }
 
@@ -82,15 +81,19 @@ const Fish = ({ name, source, selectedTime, description, startDate, endDate }) =
     }
       style={fishStyle}>
         <img src={selectedImage} alt="Fish" className={`fish-image1 ${num}`} style={{width:"10vw"}}/> 
-        <h4 className="fish-text_name">
-          {name}
+        <h4 className="fish-text_name" style={{borderRadius:"0.2vw"}}>
+          {name}--{selectedTime}
         </h4>
-        <div>{selectedTime}</div>
-        <p style={{textAlign:"center"}} className={`fish-text_date ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>
-          From: {startDate} &nbsp;
-          To: {endDate}
-        </p>
-        {/* <p className={`fish-text_description ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>Description: {description}</p> */}
+        <div 
+          style={{
+            textAlign:"center", 
+            color:"#445376"
+          }} 
+          className={`fish-text_date ${source !== 'FishTank' ? 'Onlyhover' : ''}`}>
+          <div>From: {startDate}</div>
+          <div>To: {endDate}</div>
+          <div className={`${source !== 'FishTank' ? '' : 'Onlyhover'}`}>Description: {description}</div>
+        </div>
     </div>
   );
 };

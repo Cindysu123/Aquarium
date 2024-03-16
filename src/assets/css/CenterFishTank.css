@@ -2,7 +2,7 @@
   margin-bottom: 6.2vh;
   color: #ffffff;
   font-weight: bold;
-  background: #473b78;
+  background: #445376;
   font-size: 2vh;
   border-radius: 10%;
   padding: 1vh;
@@ -257,7 +257,6 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .today-task{
-  padding: 10px;
   position: absolute;
   background-color: #f1e9e7;
   top: 24vh;
@@ -310,7 +309,7 @@ input[type="range"]::-ms-fill-upper {
   position: absolute;
   top: 30vh;
   left: 35vw;
-  background-color: #f3f5f9;
+  background-color: #f1e9e7;
   padding: 20px;
   border-radius: 5px;
   z-index: 99999999;

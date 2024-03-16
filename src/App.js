@@ -37,9 +37,10 @@ const App = () => {
       <div>
         <LoadingSpinner isLoading={isLoading} />
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', position: 'fixed', width: '90vw' }}>
+      <div className='fadeIn' style={{ display: 'flex', justifyContent: 'space-between', width: '90vw' }}>
         <img src={img} alt="Top" className="top-image" />
         <button
+          className='home_setting'
           onClick={scrollToSettings}
           style={{ display: 'flex', alignItems: 'center', background: '#445376', border: 'none', borderRadius: '0.3vw', padding: '0.5vw 1vw' }}
         >
@@ -52,8 +53,9 @@ const App = () => {
           <TaskManager />
         </div>
         <div className='setting_container' style={{ position: 'absolute', left: '100vw', top: '20vh' }}>
-          <img src={labtop} alt="Laptop" style={{ position: 'absolute', top: '60vw' }} />
-          <button 
+          <img src={labtop} alt="Laptop" style={{ position: 'absolute', top: '60vw', width:"88vw"}} />
+          <button
+            className='goback_btn' 
             style={{ 
               background: '#445376', 
               borderRadius: '0.5vw', 
@@ -62,10 +64,11 @@ const App = () => {
               top: '140vh', 
               left: '16vw', 
               border: 'none', 
-              width: '8vw' 
+              width: '8vw',
+              color: 'white' 
             }}
             onClick={scrollToMain}>
-            <div style={{ color: 'white' }}>Go Back</div>
+            <div>Go Back</div>
           </button>
           <Settingpg />
         </div>
