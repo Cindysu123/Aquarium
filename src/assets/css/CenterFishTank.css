@@ -208,7 +208,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .normal{
-  top: 42vh;
+  top: 6vh;
   left: 30vw;
 }
 
@@ -265,7 +265,6 @@ input[type="range"]::-ms-fill-upper {
   border-radius: 0.5vw;
   font-weight: bold;
   color: #51516f;
-  z-index: 99;
   border: 2px solid #445376;
 }
 

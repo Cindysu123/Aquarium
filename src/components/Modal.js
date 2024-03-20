@@ -15,7 +15,7 @@ const Modal = ({ isOpen, close, children }) => {
         <img className='close_btn' src={close2} onClick={close} style={{position:"absolute", right:"2vw", cursor:"pointer"}}></img>
         {children}
       </div>
-      <img className='popup_bg' src={bg}/>
+      <img className='popup_bg' src={bg} style={{top:"-36vw"}}/>
       <div className='popup_bg2'></div>
     </div>
   );
