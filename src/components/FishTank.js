@@ -63,6 +63,7 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
   };
 
   return (
+    <div>
     <div className={`fish-tank`}>
       <div className="button-container">
         <button onClick={toggleExpansion} style={{border:"2px solid #445376"}} className={`expand-b ${expanded ? 'expanded' : 'collapsed'}`}>
@@ -99,117 +100,118 @@ const FishTank = ({ tasks, tankName, onTaskDelete, setTasks }) => {
           </div>
         </div>
       ))}
-      <Modal isOpen={isModalOpen} close={() => setIsModalOpen(false)}>
-        {selectedTask && (
-          <div style={{marginBottom:"10vw"}}>
-            <div style={{display:"flex", margin:"0 auto" , width:"20vw", alignItems:"center", justifyContent:"space-between"}}>
-              <img className="flip-horizontal" src={getFishImage(selectedTask)} alt="Fish" style={{width:"5vw", height:"3vw"}} />
-              <h3 style={{fontWeight:"normal", fontSize:"2vw"}}>{selectedTask.name}</h3>
-              <img src={getFishImage(selectedTask)} alt="Fish" style={{width:"5vw", height:"3vw"}}/>
+    </div>
+    <Modal isOpen={isModalOpen} close={() => setIsModalOpen(false)}>
+      {selectedTask && (
+        <div style={{marginBottom:"10vw"}}>
+          <div style={{display:"flex", margin:"0 auto" , width:"20vw", alignItems:"center", justifyContent:"space-between"}}>
+            <img className="flip-horizontal" src={getFishImage(selectedTask)} alt="Fish" style={{width:"5vw", height:"3vw"}} />
+            <h3 style={{fontWeight:"normal", fontSize:"2vw"}}>{selectedTask.name}</h3>
+            <img src={getFishImage(selectedTask)} alt="Fish" style={{width:"5vw", height:"3vw"}}/>
+          </div>
+          <div style={{display:"flex", justifyContent:"space-between", width:"60vw", margin:"0 auto"}}>
+            <div style={{fontWeight:"bold", borderStyle:"dashed", borderWidth:"4px", borderColor:"#445376", borderRadius:"0.8vw", padding:"1vw", width:"30vw", textDecoration:"underline"}}>
+              <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>Status: In Progress</div>
+              <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>Due At: {selectedTask.time}</div>
+              <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>From: {selectedTask.dateRange.startDate}</div>
+              <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>To: {selectedTask.dateRange.endDate}</div>
             </div>
-            <div style={{display:"flex", justifyContent:"space-between", width:"60vw", margin:"0 auto"}}>
-              <div style={{fontWeight:"bold", borderStyle:"dashed", borderWidth:"4px", borderColor:"#445376", borderRadius:"0.8vw", padding:"1vw", width:"30vw", textDecoration:"underline"}}>
-                <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>Status: In Progress</div>
-                <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>Due At: {selectedTask.time}</div>
-                <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>From: {selectedTask.dateRange.startDate}</div>
-                <div style={{margin:"0.8vw", fontSize:"1.4vw"}}>To: {selectedTask.dateRange.endDate}</div>
+            <div style={{fontSize:"1.4vw"}}>
+              <div style={{display:"flex"}}>
+                <img src={file}/>
+                <div>Attachment</div>
               </div>
-              <div style={{fontSize:"1.4vw"}}>
-                <div style={{display:"flex"}}>
-                  <img src={file}/>
-                  <div>Attachment</div>
-                </div>
-                <ul>
-                  <li>Brand Guidelines.pdf</li>
-                  <li>Website Redesign Requirements.docx</li>
-                  <li>Initial Wireframe Ideas.sketch</li>
-                </ul>
-              </div>
-            </div>
-            <div style={{width:"60vw", margin:"2vw auto"}}>
-              <div style={{fontWeight:"bold", fontSize:"1.4vw"}}>Description</div>
-              <div style={{textDecoration:"underline", fontSize:"1.2vw"}}>{selectedTask.description}</div>
-            </div>
-            <div style={{borderRadius:"1vw", width:"60vw", margin:"2vw auto", borderStyle:"dashed", borderWidth:"4px", borderColor:"#445376"}}>
-              <div style={{margin:"1vw",fontWeight:"bold", fontSize:"1.4vw"}}>Subtasks:</div>
-              <ol style={{fontSize:"1.2vw", margin:"1vw"}}>
-                <li>
-                  <div style={{margin:"1vw", display:"flex", justifyContent:"space-between"}}>
-                    <div style={{display:"flex"}}>
-                      <div style={{fontWeight:"bold"}}>Research Design Trends</div>
-                      <div>- Due: March 20, 2024</div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        style={{ transform: 'scale(1.5)' }}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div style={{margin:"1vw", display:"flex", justifyContent:"space-between"}}>
-                    <div style={{display:"flex"}}>
-                      <div style={{fontWeight:"bold"}}>Create Wireframes</div>
-                      <div>- Due: March 25, 2024</div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        style={{ transform: 'scale(1.5)' }}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
-                    <div style={{display:"flex"}}>
-                      <div style={{fontWeight:"bold"}}>Develop Mockups</div>
-                      <div>- Due: April 1, 2024</div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        style={{ transform: 'scale(1.5)' }}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
-                    <div style={{display:"flex"}}>
-                      <div style={{fontWeight:"bold"}}>Gather Feedback on Mockups</div>
-                      <div>- Due: April 5, 2024</div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        style={{ transform: 'scale(1.5)' }}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
-                    <div style={{display:"flex"}}>
-                      <div style={{fontWeight:"bold"}}>Finalize Design</div>
-                      <div>- Due: April 10</div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        style={{ transform: 'scale(1.5)' }}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
-                    <div style={{display:"flex"}}>
-                      <div style={{fontWeight:"bold"}}>Implement Design on Website</div>
-                      <div>- Due: April 14, 2024</div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        style={{ transform: 'scale(1.5)' }}
-                    />
-                  </div>
-                </li>
-              </ol>
+              <ul>
+                <li>Brand Guidelines.pdf</li>
+                <li>Website Redesign Requirements.docx</li>
+                <li>Initial Wireframe Ideas.sketch</li>
+              </ul>
             </div>
           </div>
-        )}
-      </Modal>
+          <div style={{width:"60vw", margin:"2vw auto"}}>
+            <div style={{fontWeight:"bold", fontSize:"1.4vw"}}>Description</div>
+            <div style={{textDecoration:"underline", fontSize:"1.2vw"}}>{selectedTask.description}</div>
+          </div>
+          <div style={{borderRadius:"1vw", width:"60vw", margin:"2vw auto", borderStyle:"dashed", borderWidth:"4px", borderColor:"#445376"}}>
+            <div style={{margin:"1vw",fontWeight:"bold", fontSize:"1.4vw"}}>Subtasks:</div>
+            <ol style={{fontSize:"1.2vw", margin:"1vw"}}>
+              <li>
+                <div style={{margin:"1vw", display:"flex", justifyContent:"space-between"}}>
+                  <div style={{display:"flex"}}>
+                    <div style={{fontWeight:"bold"}}>Research Design Trends</div>
+                    <div>- Due: March 20, 2024</div>
+                  </div>
+                  <input
+                      type="checkbox"
+                      style={{ transform: 'scale(1.5)' }}
+                  />
+                </div>
+              </li>
+              <li>
+                <div style={{margin:"1vw", display:"flex", justifyContent:"space-between"}}>
+                  <div style={{display:"flex"}}>
+                    <div style={{fontWeight:"bold"}}>Create Wireframes</div>
+                    <div>- Due: March 25, 2024</div>
+                  </div>
+                  <input
+                      type="checkbox"
+                      style={{ transform: 'scale(1.5)' }}
+                  />
+                </div>
+              </li>
+              <li>
+                <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
+                  <div style={{display:"flex"}}>
+                    <div style={{fontWeight:"bold"}}>Develop Mockups</div>
+                    <div>- Due: April 1, 2024</div>
+                  </div>
+                  <input
+                      type="checkbox"
+                      style={{ transform: 'scale(1.5)' }}
+                  />
+                </div>
+              </li>
+              <li>
+                <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
+                  <div style={{display:"flex"}}>
+                    <div style={{fontWeight:"bold"}}>Gather Feedback on Mockups</div>
+                    <div>- Due: April 5, 2024</div>
+                  </div>
+                  <input
+                      type="checkbox"
+                      style={{ transform: 'scale(1.5)' }}
+                  />
+                </div>
+              </li>
+              <li>
+                <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
+                  <div style={{display:"flex"}}>
+                    <div style={{fontWeight:"bold"}}>Finalize Design</div>
+                    <div>- Due: April 10</div>
+                  </div>
+                  <input
+                      type="checkbox"
+                      style={{ transform: 'scale(1.5)' }}
+                  />
+                </div>
+              </li>
+              <li>
+                <div style={{margin:"1vw",display:"flex", justifyContent:"space-between"}}>
+                  <div style={{display:"flex"}}>
+                    <div style={{fontWeight:"bold"}}>Implement Design on Website</div>
+                    <div>- Due: April 14, 2024</div>
+                  </div>
+                  <input
+                      type="checkbox"
+                      style={{ transform: 'scale(1.5)' }}
+                  />
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      )}
+    </Modal>
     </div>
   );
 };
