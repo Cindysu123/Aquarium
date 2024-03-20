@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Aquarium/static/css/main.cca7ec44.css",
-    "main.js": "/Aquarium/static/js/main.d22219ac.js",
+    "main.js": "/Aquarium/static/js/main.f4f2fd61.js",
     "static/js/787.1f040e0f.chunk.js": "/Aquarium/static/js/787.1f040e0f.chunk.js",
     "static/media/Synfig Animation 10.gif": "/Aquarium/static/media/Synfig Animation 10.ae3734461bfa4175f27a.gif",
     "static/media/Synfig Animation 11.gif": "/Aquarium/static/media/Synfig Animation 11.2845aaf02bdb21158613.gif",
@@ -24,11 +24,11 @@
     "static/media/background_5c.png": "/Aquarium/static/media/background_5c.ff2904d074919e24b1b0.png",
     "index.html": "/Aquarium/index.html",
     "main.cca7ec44.css.map": "/Aquarium/static/css/main.cca7ec44.css.map",
-    "main.d22219ac.js.map": "/Aquarium/static/js/main.d22219ac.js.map",
+    "main.f4f2fd61.js.map": "/Aquarium/static/js/main.f4f2fd61.js.map",
     "787.1f040e0f.chunk.js.map": "/Aquarium/static/js/787.1f040e0f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cca7ec44.css",
-    "static/js/main.d22219ac.js"
+    "static/js/main.f4f2fd61.js"
   ]
 }
